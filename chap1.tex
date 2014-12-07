@@ -1,0 +1,246 @@
+\chapter{Der Einbettungssatz von Higman}
+\begin{thDef}[rekursiv präsentiert]
+    Sei $R$ eine Gruppe. Dann ist $R$ \emph{rekursiv präsentiert},
+    falls $R$ endlich erzeugt ist und es eine Präsentation
+    $R = \gpres{u_1,\dots,u_m}{E}$ von~$R$ gibt, so dass
+    jedes $\omega\in E$ ein positives Wort auf~$\{u_1,\dots,u_m\}$
+    und die Menge~$E$ rekursiv aufzählbar ist.
+\end{thDef}
+
+\begin{thSatz}[Einbettungssatz von Higman]
+    \label{ch1:higman}
+    %
+    Jede rekursiv präsentierte Gruppe kann in eine endlich präsentierte Gruppe
+    eingebettet werden.
+\end{thSatz}
+
+Den Rest des Skripts werden wir nun damit verbringen, diesen Satz zu beweisen.
+
+\begin{thSetup}\hfill
+    \begin{itemize}
+    \item 
+        Sei ab jetzt eine rekursiv präsentierte Gruppe
+        \[ R = \gpres{u_1,\dots,u_m}{E} \]
+        fixiert und sei $U \defeq \{u_1,\dots,u_m\}$.
+    \item
+        Aus notationellen Gründen führen wir eine weitere Menge
+        $A \defeq \{a_1,\dots,a_m\}$ von neuen Symbolen ein und bezeichnen mit
+        $\tra$ den eindeutigen Monoid-Isomorphismus (vom Monoid aller
+        positiven Wörter auf $\{u_1,\dots,u_m\}$ in das Monoid aller positiven
+        Wörter auf $\{a_1,\dots,a_m\}$) mit $u_j\mapsto a_j$ für alle
+        $j\in\setOneto{m}$. Sei $\Ea \defeq \tra(E)$.
+    \item
+        Sei weiter $T$~eine Turingmaschine, die $\Ea$ aufzählt,\footnote{%
+            So eine Turingmaschine~$T$ existiert offenbar, denn nach
+            Voraussetzung gibt es eine Turingmaschine, die $E$ aufzählt,
+            und $E\rightsquigarrow\Ea$ ist nur eine Umbenennung der
+            Symbole.%
+        }
+        sei $S = \{s_0,\dots,s_M\} \supset A$ ihr Eingabealphabet
+        (wobei $s_0$ das \enquote{leeres Band}-Zeichen sei) und sei
+        $Q = \{q_0,\dots,q_N\}$ ihre Zustandsmenge. Wir nehmen ohne
+        Einschränkung an, dass $q_0$ der einzige Endzustand sowie $q_1$ der
+        Anfangszustand von~$T$ ist.
+    \end{itemize}
+\end{thSetup}
+
+\begin{thProposition}[Halbgruppe assoziiert zu~$T$ {[Post]}]
+    \label{ch1:Gamma}
+    %
+    Es gibt eine Halbgruppe~$\Gamma$ mit der Präsentation
+    \begin{itemize}
+        \item Erzeuger:
+                $\{q,h\} \cup S\cup Q$ (mit neuen Symbolen $q,h\notin S\cup Q$),
+        \item Relationen:
+                $\{ F_iq_{i,1}G_i = H_iq_{i,2}K_i \Mid i\in I \}$,
+                wobei $I$ eine endliche Indexmenge ist und für alle
+                $i\in I$ gilt:
+                $q_{i,1},q_{i,2}\in \{q\}\cup Q$ und $F_i,G_i,H_i,K_i$ sind
+                (möglicherweise leere) positive Wörter auf $\{h\}\cup S$,
+    \end{itemize}
+    und folgender Eigenschaft: Ist $\omega$ ein positives Wort auf~$S$, so
+    gilt $\omega\in E \iff hq_1\omega h = q \in\Gamma$.
+\end{thProposition}
+%
+Siehe Rotman\cite{bookc:rotman95}. % TODO
+
+\pagebreak[2]
+Im Folgenden seien $\Gamma$ und alle zur Präsentation gehörenden Daten
+wie in~\cref{ch1:Gamma} fest gewählt.
+
+\begin{thDef}[Variante von Boones Gruppe]
+    \label{ch1:BT}
+    %
+    Sei die Gruppe $\BT$ gegeben durch:
+    \begin{itemize}
+        \item Erzeuger:
+                $\{q,h\} \cup S\cup Q
+                \cup \{r_i\Mid i\in I\}\cup\{x,\kappa,\tau\}$
+                (mit neuen Symbolen $r_i$ und $x,\kappa,\tau$).
+        \item Relationen:
+                $\Delta_1 \cup \Delta_2 
+                    \cup \Delta_3 \cup \Delta$,
+                wobei
+                \begin{align*}
+                    \Delta_1 &\defeq \bigl\{ s\inv xs = x^2
+                        \Mid s\in S\cup\{h\} \bigr\}
+                    \\[4pt]
+                    \Delta_2 &\defeq \bigl\{ r_i\inv sxr_i = xs\inv
+                        \Mid s\in S\cup\{h\},\, i\in I \bigr\}
+                    \\
+                    &\qquad\cup \bigl\{
+                        r_i\inv F_i^\# q_{i,1}G_ir_i = H_i^\# q_{i,2}K_i
+                        \Mid i\in I \bigr\}
+                    \\[4pt]
+                    \Delta_3 &\defeq \bigl\{
+                        \cu[\tau, q_1\inv hr_ih\inv q_1] \Mid i\in I
+                        \bigr\} \cup \bigl\{
+                        \cu[\tau, q_1\inv hxh\inv q_1] \bigr\}
+                    \\[4pt]
+                    \Delta &\defeq \bigl\{
+                        \cu[\kappa, hr_ih\inv] \Mid i\in I
+                        \bigr\} \cup \bigl\{
+                        \cu[\kappa, hxh\inv] \bigr\}
+                    \\
+                    &\qquad\cup \bigl\{
+                        \cu[\kappa,
+                            hq\inv h\inv q_1\tau q_1\inv hqh\inv]
+                    \bigr\}
+                . \end{align*}
+    \end{itemize}
+\end{thDef}
+
+\begin{thProposition}[Eigenschaften von \texorpdfstring{$\BT$}{B}]\hfill
+    \label{ch1:BTproperties}
+    %
+    \begin{enumerate}[1.]
+        \item
+            Die Gruppe~$\BT$ erfüllt folgende Eigenschaft:
+            Ist $\omega$ ein positives Wort auf~$S$, so gilt
+            \[ \omega\in E \iff \cu[\kappa, \omega\inv\tau\omega] = 1 \in\BT
+            . \]
+
+        \item
+            Es entsteht $\BT$ als eine Kette von HNN-Erweiterungen
+            {\thickmuskip=10mu%
+            \[ \BT_0 \leq \BT_1 \leq \hBT_2 \leq \BT_2 \leq \BT_3 \leq \BT
+            , \]}
+            wobei
+            \begin{align*}
+                \BT_0 &\defeq \gpres{x}{\emptyset}
+                \\
+                \BT_1 &\defeq \gadj{\BT_0}{S}{\Delta_1}
+                \\
+                \hBT_2 &\defeq \gadj{\BT_1}{Q\cup\{q\}}{\emptyset}
+                         = \BT_1 \fprod \gpres{Q\cup\{q\}}{\emptyset}
+                \\
+                \BT_2 &\defeq \gadj{\hBT_2}{\{r_i\Mid i\in I\}}{\Delta_2}
+                \\
+                \BT_3 &\defeq \gadj{\BT_2}{\{\tau\}}{\Delta_3}
+                \\
+                \BT &\mathrel{\makebox[\widthof{$\defeq$}]{\hfill$=$}}
+                        \gadj{\BT_3}{\{\kappa\}}{\Delta}
+            \end{align*}
+            und die stabilen Buchstaben jeweils die
+            neu hinzugefügten Symbole %TODO: \ref zur Def. von \gadj..!?
+            sind.
+    \end{enumerate}
+\end{thProposition}
+
+%TODO: Hinweis zu dieser Notation VS Notation bei Rotman
+
+TODO: Beweis(skizze)
+
+\begin{thDef}[Erweiterungen von \texorpdfstring{$\BT$}{B}]
+    Sei $B \defeq \{b_1,\dots,b_m\}$ eine Menge neuer Symbole
+    und seien weiter $d,\sigma$ neue Symbole. Dann definieren
+    wir sukzessive Erweiterungen von~$\BT$ wie folgt:
+    \begin{align*}
+        \hBT_4 &\defeq \gadj{\BT}{U}{E} = \BT \fprod R
+        \\
+        \BT_4 &\defeq \gadj{\hBT_4}{B}{\Delta_4}
+        \\
+        \BT_5 &\defeq \gadj{\BT_4}{d}{\Delta_5}
+        \\
+        \BT_6 &\defeq \gadj{\BT_5}{\sigma}{\Delta_6}
+    , \end{align*}
+    wobei
+    \begin{align*}
+        \Delta_4 &\defeq \bigl\{
+            \cu[b, u] \Mid b\in B,\, u\in U
+            \bigr\} \cup \bigl\{
+            \cu[b, a] \Mid b\in B,\, a\in A
+            \bigr\}
+        \\
+        &\qquad\cup \bigl\{
+            b_j\inv\kappa b_j = \kappa u_j\inv \Mid j\in\J \bigr\}
+        \\[2pt]
+        \Delta_5 &\defeq \bigl\{ \cu[\kappa, d] \bigr\}
+            \cup \bigl\{ d\inv a_jb_j d = a_j \Mid j\in\J \bigr\}
+        \\[2pt]
+        \Delta_6 &\defeq \bigl\{ \cu[\sigma, \kappa],\;
+            \sigma\inv\tau\sigma = \tau d \bigr\}
+            \cup \bigl\{ [\sigma, a] \Mid a\in A \bigr\}
+    . \end{align*}
+\end{thDef}
+
+\begin{thProposition}[\texorpdfstring{$R\leq \BT_6$}%
+                        {R als Untergruppe von B6}]\hfill
+    \label{ch1:RinB6}
+    %
+    \begin{enumerate}[1.]
+        \item 
+            Es entsteht $\BT_6$ aus $\hBT_4$ als eine Kette von
+            HNN-Erweiterungen wie folgt:
+            {\thickmuskip=10mu%
+            \[ \hBT_4 \leq \BT_4 \leq \BT_5 \leq \BT_6  . \]}
+        \item
+            Es ist $R$ (vermöge der kanonischen Abbildung
+            $R\to\BT_6$) eine Untergruppe von~$\BT_6$.
+    \end{enumerate}
+\end{thProposition}
+
+\begin{thLemma}
+    Es sind $A\cup\{\kappa\}$ bzw. $A\cup\{\tau\}$ freie
+    Erzeugendensysteme der von diesen Mengen in $\hBT_4$
+    erzeugten Untergruppen.
+\end{thLemma}
+
+\begin{thLemma}\label{ch1:HNNeBT4}
+    Es ist $\BT_4$ eine HNN-Erweiterung mit Basis~$\hBT_4$.
+\end{thLemma}
+
+\begin{thLemma}\label{ch1:HNNeBT5}
+    Es ist $\BT_5$ eine HNN-Erweiterung mit Basis~$\BT_4$.
+\end{thLemma}
+
+\begin{thLemma}\label{ch1:HNNeBT6}
+    Die von $A\cup\{\kappa,\tau\}$ in $\BT$ erzeugte Untergruppe
+    besitzt folgende Präsentation:
+    \[ \gpres[{[\big]}]{A\cup\{\kappa,\tau\}}%
+                   {\{ \cu[\kappa, \omega\inv\tau\omega]
+                        \nMid \omega\in\Ea \}}
+    . \]
+\end{thLemma}
+
+\begin{thLemma}
+    Es ist $\BT_6$ eine HNN-Erweiterung mit Basis~$\BT_5$.
+\end{thLemma}
+
+\begin{proof}[Beweis von \cref{ch1:RinB6}]
+    Die Lemmata \ref{ch1:HNNeBT4}, \ref{ch1:HNNeBT5} und
+    \ref{ch1:HNNeBT6} zeigen den ersten Teil. Der zweite
+    Teil folgt mittels $R\leq \BT \fprod R = \hBT_4$ und
+    mehrmaliger Anwendung von \cref{ch0:hnnembedding} aus
+    dem ersten Teil.\\
+\end{proof}
+
+\begin{thLemma}\label{ch1:B6fp}
+    Die Gruppe $\BT_6$ ist endlich präsentiert.
+\end{thLemma}
+
+\begin{proof}[Beweis von \cref{ch1:higman}]
+    Folgt direkt aus dem zweiten Teil von \cref{ch1:RinB6}
+    und \cref{ch1:B6fp}.
+    \\
+\end{proof}
