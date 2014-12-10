@@ -17,18 +17,47 @@ In diesem Skript wird folgende Notation verwendet:
         Mit $\gadj{G}{X}{Y}$ bezeichnen wir das Hinzufügen von Erzeugern und
         Relationen zu einer Gruppe, d.\,h.: Ist $\gpres{X'}{Y'}$ eine
         Präsentation von~$G$, so besitzt $\gadj{G}{X}{Y}$ die Präsentation
-        $\gpres{X'\sqcup X}{Y'\cup Y}$. Auch wenn dies generell unabhängig
-        von der Wahl der Präsentation von~$G$ ist, so benutzen wir im Folgenden
-        stets die aus dem Kontext ersichtliche Präsentation von~$G$.
+        $\gpres{X'\sqcup X}{Y'\cup Y}$. Wenn aus dem Kontext klar ist, welche
+        Präsentation von~$G$ gemeint ist, sprechen wir auch einfach von
+        \enquote{der Präsentation $\gadj{G}{X}{Y}$}.
 \end{itemize}
 
-\section{Erinnerung}
+\section{HNN-Erweiterungen}
+\begin{thDef}[HNN-Erweiterung]
+    Seien $G,G'$ Gruppen und $P$ eine nicht-leere Menge. Dann ist \emph{$G$
+    eine HNN-Erweiterung mit Basis~$G'$ und stabilen Buchstaben~$P$}, falls
+    gilt:
+    Es gibt eine Präsentation $\gpres{X}{Y}$ von~$G'$ (mit $X\cap P =
+    \emptyset$) und für jedes $p\in P$ eine Menge
+    $M_p \subset G'\times G'$, so dass folgende Eigschaften erfüllt sind:
+    \begin{itemize}
+        \item
+            Es ist
+            \[ \gadj[{[\big]}]{G'}{P}%
+                {\{ p\inv ap = b \nMid p\in P,\, (a,b)\in M_p \}}
+            \]
+            eine Präsentation von~$G$.
+        \item
+            Für alle $p\in P$ gibt es einen Isomorphismus zwischen den
+            von $\{ a \Mid (a,b)\in M_p\}$ und $\{ b \Mid (a,b)\in M_p\}$
+            in~$G'$ erzeugten Untergruppen mit $a\mapsto b$ für alle
+            $(a,b)\in M_p$.
+    \end{itemize}
+\end{thDef}
+
 \begin{thProposition}
     \label{ch0:hnnembedding}
     %
     Sei $G$ eine HNN-Erweiterung mit Basis~$G'$. Dann ist der kanonische
     Homomorphismus $G'\to G$ injektiv, d.\,h. wir können $G'$ als
     Untergruppe von~$G$ auffassen.
+\end{thProposition}
+
+\begin{thProposition}
+    \label{ch0:hnnstablesfree}
+    %
+    Sei $G$ eine HNN-Erweiterung mit stabilen Buchstaben~$P$. Dann ist
+    die von~$P$ in~$G$ erzeugte Untergruppe frei mit Basis~$P$.
 \end{thProposition}
 
 \begin{thLemma}[Lemma von Britton]
