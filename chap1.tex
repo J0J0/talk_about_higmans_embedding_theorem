@@ -56,17 +56,18 @@ Den Rest des Skripts werden wir nun damit verbringen, diesen Satz zu beweisen.
                 wobei $I$ eine endliche Indexmenge ist und für alle
                 $i\in I$ gilt:
                 $q_{i,1},q_{i,2}\in \{q\}\cup Q$ und $F_i,G_i,H_i,K_i$ sind
-                (möglicherweise leere) positive Wörter auf $\{h\}\cup S$,
+                (möglicherweise leere) positive Wörter auf $S\cup\{h\}$,
     \end{itemize}
-    und folgender Eigenschaft: Ist $\omega$ ein positives Wort auf~$S$, so
-    gilt $\omega\in E \iff hq_1\omega h = q \in\Gamma$.
+    und folgender Eigenschaft: Ist $w$ ein positives Wort auf~$S$, so
+    gilt $w\in E \iff hq_1wh = q \in\Gamma$.
 \end{thProposition}
 %
 Siehe Rotman\cite{bookc:rotman95}. % TODO
 
 \pagebreak[2]
 Im Folgenden seien $\Gamma$ und alle zur Präsentation gehörenden Daten
-wie in~\cref{ch1:Gamma} fest gewählt.
+wie in~\cref{ch1:Gamma} fest gewählt. Zur Vereinfachung der Notation setzen
+wir außerdem $S_+ \defeq S\cup\{h\}$.
 
 \begin{thDef}[Variante von Boones Gruppe]
     \label{ch1:BT}
@@ -83,10 +84,10 @@ wie in~\cref{ch1:Gamma} fest gewählt.
                 wobei
                 \begin{align*}
                     \Delta_1 &\defeq \bigl\{ s\inv xs = x^2
-                        \Mid s\in S\cup\{h\} \bigr\}
+                        \Mid s\in S_+ \bigr\}
                     \\[4pt]
                     \Delta_2 &\defeq \bigl\{ r_i\inv sxr_i = sx\inv
-                        \Mid s\in S\cup\{h\},\, i\in I \bigr\}
+                        \Mid s\in S_+,\, i\in I \bigr\}
                     \\
                     &\qquad\cup \bigl\{
                         r_i\inv F_i^\# q_{i,1}G_ir_i = H_i^\# q_{i,2}K_i
@@ -108,19 +109,22 @@ wie in~\cref{ch1:Gamma} fest gewählt.
                     \bigr\}
                 . \end{align*}
     \end{itemize}
+    Dabei ist für ein Wort~$F = y_1^{\epsilon_1}\cdots y_n^{\epsilon_n}$
+    auf~$S_+$ (mit $\epsilon_j\in\{\pm1\}$ für alle $j\in\setOneto n$)
+    das Wort $F^\#$ definiert als $y_1^{-\epsilon_1}\cdots y_n^{-\epsilon_n}$.
 \end{thDef}
 
 \begin{thProposition}[Eigenschaften von \texorpdfstring{$\BT$}{B}]\hfill
     \label{ch1:BTproperties}
     %
     \begin{enumerate}[1.]
-        \item
+        \item\label{ch1:BTproperties:boone}
             Die Gruppe~$\BT$ erfüllt folgende Eigenschaft:
-            Ist $\omega$ ein positives Wort auf~$S$, so gilt
-            \[ \omega\in E \iff \cu[\kappa, \omega\inv\tau\omega] = 1 \in\BT
+            Ist $w$ ein positives Wort auf~$S$, so gilt
+            \[ w\in E \iff \cu[\kappa, w\inv\tau w] = 1 \in\BT
             . \]
 
-        \item
+        \item\label{ch1:BTproperties:hnn}
             Es entsteht $\BT$ als eine Kette von HNN-Erweiterungen
             {\thickmuskip=10mu%
             \[ \BT_0 \leq \BT_1 \leq \hBT_2 \leq \BT_2 \leq \BT_3 \leq \BT
@@ -129,7 +133,7 @@ wie in~\cref{ch1:Gamma} fest gewählt.
             \begin{align*}
                 \BT_0 &\defeq \gpres{x}{\emptyset}
                 \\
-                \BT_1 &\defeq \gadj{\BT_0}{S\cup\{h\}}{\Delta_1}
+                \BT_1 &\defeq \gadj{\BT_0}{S_+}{\Delta_1}
                 \\
                 \hBT_2 &\defeq \gadj{\BT_1}{Q\cup\{q\}}{\emptyset}
                          = \BT_1 \fprod \gpres{Q\cup\{q\}}{\emptyset}
@@ -147,9 +151,63 @@ wie in~\cref{ch1:Gamma} fest gewählt.
     \end{enumerate}
 \end{thProposition}
 
-%TODO: Hinweis zu dieser Notation VS Notation bei Rotman
+\begin{thBemerkung}[Notation bei Rotman]
+    Im Buch von Rotman\cite{bookc:rotman95} lauten die Bezeichnungen
+    der Gruppen $\BT_3$ bzw. $\BT$ leicht anders:
+    $\mathscr{B}_3'(T)$ bzw. $\mathscr{B}'(T)$. Die Gruppen
+    $\hBT_2$ und $\hBT_4$ (s.\,u.) haben bei Rotman keine explizite
+    Bezeichnung. Ansonsten wurde die Notation so gewählt, dass die
+    Nummerierung der Gruppen mit der von Rotman übereinstimmt.
+\end{thBemerkung}
 
-TODO: Beweis(skizze)
+\begin{proof}[Beweisskizze von \cref{ch1:BTproperties}]
+    Zu~\ref{ch1:BTproperties:boone}: Wir betrachten die bei Rotman 
+    in Kapitel~12 überhalb von Lemma~12.7 definierte Gruppe~$\mathscr{B}(T)$
+    (wobei zu beachten ist, dass das dortige $s_{M-1}$ unserem $s_M$
+    und das dortige $s_M$ unserem $h$ entspricht).
+    Durch Vergleich der Präsentationen der Gruppen $\mathscr{B}(T)$
+    und~$\BT$ sieht man leicht mithilfe der universellen Eigenschaft
+    von durch Erzeuger und Relationen gegeben Gruppen ein, dass man
+    zueinander inverse Gruppenhomomorphismen $\phi\colon\mathscr{B}(T)
+    \to\BT$ und $\psi\colon\BT\to\mathscr{B}(T)$ mit
+    \begin{align*}
+        \phi(\tau)   &= q_1\inv hth\inv q_1
+        ,&
+        \psi(t)      &= h\inv q_1\tau q_1\inv h
+        \\
+        \phi(\kappa) &= hkh\inv
+        ,&
+        \psi(k)      &= h\inv\kappa h
+    \end{align*}
+    konstruieren kann. Das \emph{Lemma von Boone}
+    (Rotman\cite[Lemma~12.7]{bookc:rotman95}) liefert dann
+    (in der Notation von Rotman für $\Sigma \equiv h\inv q_1wh$):
+    Für ein positives Wort~$w$ auf~$S$ gilt:
+    \[ hq_1wh = q \in\Gamma
+        \qiffq
+        \cu[k, (h\inv q_1wh)\inv t (h\inv q_1wh)] = 1
+        \in\mathscr{B}(T)
+    . \]
+    Unter dem Isomorphismus~$\phi$ wird die rechte Gleichung
+    dann gerade zu $\cu[\kappa, w\inv\tau w] = 1 \in\BT$
+    und mit \cref{ch1:Gamma} folgt die erste Behauptung.
+    
+    Zu~\ref{ch1:BTproperties:hnn}: Die letzten beiden Erweiterungen
+    sind HNN-Erweiterungen nach \cref{ch0:simpleHNN}. Dass $\hBT_2$
+    eine HNN-Erweiterung mit Basis~$\BT_2$ ist, ist klar (wähle
+    $M_{\tilde q} = \emptyset$ für alle $\tilde q\in Q\cup\{q\}$).
+    Weiter induziert $x\mapsto x^2$ klarerweise einen Isomorphismus
+    zwischen den unendlich zyklischen Gruppen $\scriptstyle\Spann{x}_{\BT_0}$
+    und $\scriptstyle\Spann{x^2}_{\BT_0}$, was zeigt, dass $\BT_1$ eine
+    HNN-Erweiterung mit Basis~$\BT_0$ ist. Es bleibt zu zeigen,
+    dass $\BT_2$ eine HNN-Erweiterung mit Basis~$\hBT_2$ ist.
+    Dazu zeigt man (für jedes $i\in I$), dass $\{F_i^\#q_{i,1}G_i\}\cup
+    S_+x$ ein freies Erzeugendensystem der von dieser Menge
+    in~$\hBT_2$ erzeugten Untergruppe ist und analog für
+    $\{H_i^\#q_{i,2}K_i\}\cup S_+x\inv$, womit man leicht die
+    gewünschten Isomorphismen konstruiert. 
+    \\
+\end{proof}
 
 \begin{thDef}[Erweiterungen von \texorpdfstring{$\BT$}{B}]
     Sei $B \defeq \{b_1,\dots,b_m\}$ eine Menge neuer Symbole
@@ -184,6 +242,7 @@ TODO: Beweis(skizze)
     . \end{align*}
 \end{thDef}
 
+\pagebreak[2]
 \begin{thProposition}[\texorpdfstring{$R\leq \BT_6$}%
                         {R als Untergruppe von B6}]\hfill
     \label{ch1:RinB6}
@@ -214,7 +273,7 @@ TODO: Beweis(skizze)
     Es ist $\BT_5$ eine HNN-Erweiterung mit Basis~$\BT_4$.
 \end{thLemma}
 
-\begin{thLemma}\label{ch1:HNNeBT6}
+\begin{thLemma}
     Die von $A\cup\{\kappa,\tau\}$ in $\BT$ erzeugte Untergruppe
     besitzt folgende Präsentation:
     \[ \gpres[{[\big]}]{A\cup\{\kappa,\tau\}}%
@@ -223,7 +282,11 @@ TODO: Beweis(skizze)
     . \]
 \end{thLemma}
 
-\begin{thLemma}
+TODO: Beweisskizze (Schritt~1 ausführlich, Schritte des
+Widerspruchsbeweises danach nur sehr knapp, eventuell einen
+davon ausgeführt)
+
+\begin{thLemma}\label{ch1:HNNeBT6}
     Es ist $\BT_6$ eine HNN-Erweiterung mit Basis~$\BT_5$.
 \end{thLemma}
 
@@ -235,9 +298,9 @@ TODO: Beweis(skizze)
     dem ersten Teil.\\
 \end{proof}
 
-\begin{thLemma}\label{ch1:B6fp}
+\begin{thProposition}\label{ch1:B6fp}
     Die Gruppe $\BT_6$ ist endlich präsentiert.
-\end{thLemma}
+\end{thProposition}
 
 \begin{proof}[Beweis von \cref{ch1:higman}]
     Folgt direkt aus dem zweiten Teil von \cref{ch1:RinB6}
