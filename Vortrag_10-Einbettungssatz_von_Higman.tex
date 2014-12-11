@@ -53,13 +53,12 @@
 \newcommand*{\pref}[1]{(\ref{#1})}
 \newcommand*{\pcref}[1]{(\cref{#1})}
 
-% make a even more clever \mycref that produces "Lemma 42a)" etc.
-% (to see it in action check out the code in chap2.tex) 
+% make a even more clever \mycref that produces "Lemma 42(a)" etc.
 \newcommand{\mycref}[1]{%
     \begingroup%
     \StrCount{#1}{:}[\mycrefCount]%
     \StrBefore[\mycrefCount]{#1}{:}[\myrefMain]%
-    \expandafter\cref\expandafter{\myrefMain}\,\ref{#1}%
+    \expandafter\cref\expandafter{\myrefMain},\,\ref{#1}%
     \endgroup%
 }
 

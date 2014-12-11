@@ -259,11 +259,59 @@ wir außerdem $S_+ \defeq S\cup\{h\}$.
     \end{enumerate}
 \end{thProposition}
 
-\begin{thLemma}
-    Es sind $A\cup\{\kappa\}$ bzw. $A\cup\{\tau\}$ freie
-    Erzeugendensysteme der von diesen Mengen in $\hBT_4$
-    erzeugten Untergruppen.
+\begin{thLemma}\label{ch1:freesubgroupsinBT}
+    Es sind $A\cup\{\tau\}$ bzw. $A\cup\{\kappa\}$ freie
+    Erzeugendensysteme der von diesen Mengen in~$\BT_3$ bzw.
+    $\BT$ erzeugten Untergruppen.
 \end{thLemma}
+%
+\begin{proof}
+    Wir zeigen die erste Behauptung, die zweite folgt mit einem
+    analogen Argument (siehe Rotman\cite[Lemma~12.21]{bookc:rotman95}).
+    
+    Nach \mycref{ch1:BTproperties:hnn} und \cref{ch0:hnnstablesfree}
+    ist die von $S_+$ in $\BT_1$ erzeugte Untergruppe frei
+    und mit $\BT_1 \leq \BT_3$ sowie $A\subset S_+$ folgt:
+    $A$ ist ein freies Erzeugendensystem von $\Spann{A}_{\BT_3}$.
+    Angenommen es gibt ein (frei reduziertes) Wort~$w$ auf~$A\cup\{\tau\}$
+    mit $w=1\in\BT_3$, in dem $\tau$ vorkommt. Sei außerdem $w$ von
+    minimaler Länge mit diesen Eigenschaften.
+    Weil $\BT_3$ eine HNN-Erweiterung mit Basis~$\BT_2$ und stabilem
+    Buchstaben~$\tau$ ist, gibt es dann nach dem Lemma von Britton einen
+    $\tau$-pinch in~$w$, d.\,h. es gilt
+    \[ w \equiv w_0 \, \tau^\epsilon w_1 \tau^{-\epsilon} \, w_2 \]
+    für $\epsilon\in\{\pm1\}$, geeignete Wörter $w_0,w_2$ und
+    ein Wort $w_1$, welches in $\BT_2$ gleich einem Wort aus
+    \[ \Spann[\big]{
+            \{q_1\inv hr_ih\inv q_1 \nMid i\in I\}
+            \cup\{q_1\inv hxh\inv q_1\}
+        }_{\BT_2}
+    \]
+    ist. Die Kommutator-Relationen in~$\Delta_3$ zeigen dann aber, dass
+    $\tau$ in~$\BT_3$ mit $w_1$ kommutiert, womit wir
+    \[ 1 = w = w_0 w_1 \tau^\epsilon \tau^{-\epsilon} w_2 = w_0w_1w_2
+    \]
+    in~$\BT_3$ erhalten, ein Widerspruch zur minimalen Wortlänge von~$w$.
+    Also kann in einem (frei reduzierten) Wort~$w$ auf~$A\cup\{\tau\}$
+    mit $w=1\in\BT_3$ kein~$\tau$ vorkommen, d.\,h. es muss schon
+    $w\in A^*$ gelten. Aber wir haben oben gesehen, dass die von~$A$
+    erzeugte Untergruppe frei ist, womit schon $w\equiv1$ gelten muss.
+    Also gibt es keine nicht-trivialen Relationen
+    in~$\Spann{A\cup\{\tau\}}_{\BT_3}$ und es folgt die Behauptung.
+    \\
+\end{proof}
+
+\begin{thKorollar}
+    Die Aussagen aus \cref{ch1:freesubgroupsinBT} gelten analog auch
+    in~$\hBT_4$ (statt $\BT_3$ und~$\BT$).
+\end{thKorollar}
+%
+\begin{proof}
+    Wegen $\BT_3\leq\BT$ (\mycref{ch1:BTproperties:hnn}) und
+    weil $\BT$ ein freier Faktor von~$\hBT_4$ ist, folgt dies
+    direkt aus \cref{ch1:freesubgroupsinBT}.
+    \\
+\end{proof}
 
 \begin{thLemma}\label{ch1:HNNeBT4}
     Es ist $\BT_4$ eine HNN-Erweiterung mit Basis~$\hBT_4$.
