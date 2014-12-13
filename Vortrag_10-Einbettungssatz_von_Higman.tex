@@ -58,7 +58,7 @@
     \begingroup%
     \StrCount{#1}{:}[\mycrefCount]%
     \StrBefore[\mycrefCount]{#1}{:}[\myrefMain]%
-    \expandafter\cref\expandafter{\myrefMain},\,\ref{#1}%
+    \expandafter\cref\expandafter{\myrefMain}\,{\small(\ref{#1})}%
     \endgroup%
 }
 
@@ -135,6 +135,7 @@
 \sDMO{id}
 \sDMO{im}
 \sDMO{ker}
+\sDMO{tr}
 
 % categories
 \newcommand{\MakeCategoryName}[1]{%
@@ -232,7 +233,6 @@
 \newcommand{\setOneto}[1]{\{1,\ldots,#1\}}
 \newcommand{\setZeroto}[1]{\{0,\ldots,#1\}}
 \newcommand{\surround}[2]{#1#2#1}
-\newcommand{\tr}{\mr{tr}}
 \newcommand{\tra}{\tr_a}
 \newcommand{\thalf}{\tfrac{1}{2}}
 

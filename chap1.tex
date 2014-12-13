@@ -59,7 +59,8 @@ Den Rest des Skripts werden wir nun damit verbringen, diesen Satz zu beweisen.
                 (möglicherweise leere) positive Wörter auf $S\cup\{h\}$,
     \end{itemize}
     und folgender Eigenschaft: Ist $w$ ein positives Wort auf~$S$, so
-    gilt $w\in E \iff hq_1wh = q \in\Gamma$.
+    gilt 
+    \[ w\in\Ea \iff hq_1wh = q \in\Gamma  . \]
 \end{thProposition}
 %
 Siehe Rotman\cite{bookc:rotman95}. % TODO
@@ -121,7 +122,7 @@ wir außerdem $S_+ \defeq S\cup\{h\}$.
         \item\label{ch1:BTproperties:boone}
             Die Gruppe~$\BT$ erfüllt folgende Eigenschaft:
             Ist $w$ ein positives Wort auf~$S$, so gilt
-            \[ w\in E \iff \cu[\kappa, w\inv\tau w] = 1 \in\BT
+            \[ w\in\Ea \iff \cu[\kappa, w\inv\tau w] = 1 \in\BT
             . \]
 
         \item\label{ch1:BTproperties:hnn}
@@ -233,7 +234,7 @@ wir außerdem $S_+ \defeq S\cup\{h\}$.
         &\qquad\cup \bigl\{
             b_j\inv\kappa b_j = \kappa u_j\inv \Mid j\in\J \bigr\}
         \\[2pt]
-        \Delta_5 &\defeq \bigl\{ \cu[\kappa, d] \bigr\}
+        \Delta_5 &\defeq \bigl\{ \cu[d, \kappa] \bigr\}
             \cup \bigl\{ d\inv a_jb_j d = a_j \Mid j\in\J \bigr\}
         \\[2pt]
         \Delta_6 &\defeq \bigl\{ \cu[\sigma, \kappa],\;
@@ -301,7 +302,7 @@ wir außerdem $S_+ \defeq S\cup\{h\}$.
     \\
 \end{proof}
 
-\begin{thKorollar}
+\begin{thKorollar}\label{ch1:freesubgroupsinhBT4}
     Die Aussagen aus \cref{ch1:freesubgroupsinBT} gelten analog auch
     in~$\hBT_4$ (statt $\BT_3$ und~$\BT$).
 \end{thKorollar}
@@ -316,23 +317,206 @@ wir außerdem $S_+ \defeq S\cup\{h\}$.
 \begin{thLemma}\label{ch1:HNNeBT4}
     Es ist $\BT_4$ eine HNN-Erweiterung mit Basis~$\hBT_4$.
 \end{thLemma}
+%
+\begin{proof}
+    Sei $b\in B$ und sei $u\defeq\tr^B_U(b)$.
+    Dann haben wir mit
+    \[ M_b = \{ (u,u), (a,a) \Mid u\in U, a\in A\}
+        \cup\{(\kappa,\kappa u\inv)\}
+    \]
+    zu zeigen, dass
+    \begin{align*}
+        \phi\colon\Spann{A\cup \{\kappa\}\cup U}_{\hBT_4}
+        &\to
+        \Spann{A\cup \{\kappa u\inv\}\cup U}_{\hBT_4}
+        \\
+        \kappa &\mapsto \kappa u\inv  \\
+        \phi\vert_{A\cup U} &\defeq \id_{A\cup U}
+    \end{align*}
+    ein wohldefinierter Isomorphismus zwischen diesen (identischen!)
+    Untergruppen von~$\hBT_4$ ist. Weil es aber in $\hBT_4 = \BT\fprod R$
+    offenbar keine Relationen zwischen den Symbolen aus~$A\cup\{\kappa\}$
+    und denen aus~$U$ gibt, sieht man sofort
+    \[ \Spann{A\cup \{\kappa\}\cup U}_{\hBT_4}
+        \cong \Spann{A\cup\{\kappa\}}_{\hBT_4} \fprod R
+    \]
+    ein. Mit \cref{ch1:freesubgroupsinhBT4} und den
+    universellen Eigenschaften von freien Gruppen und
+    freien Produkten folgt, dass $\phi$ ein wohldefinierter
+    Gruppenhomomorphismus ist. Weiter erhält man aus
+    $\kappa\mapsto\kappa u$ und ansonsten derselben
+    Definition wie bei~$\phi$ einen zu $\phi$ inversen
+    Homomorphismus, womit alles gezeigt ist.
+    \\
+\end{proof}
 
 \begin{thLemma}\label{ch1:HNNeBT5}
     Es ist $\BT_5$ eine HNN-Erweiterung mit Basis~$\BT_4$.
 \end{thLemma}
+%
+\begin{proof}
+    Wir haben
+    \[ M_d = \bigl\{ (\kappa,\kappa) \bigr\}
+        \cup \bigl\{ (a_jb_j,a_j) \Mid j\in\J \bigr\}
+    . \]
+    Die Abbildung $\phi\colon\BT_4\to\hBT_4$, die auf
+    $\BT$ die Identität ist und alle Erzeuger aus $B\cup U$
+    auf~$1\in\hBT_4$ abbildet, schickt offenbar alle Relationen
+    aus~$\Delta_4$ auf die triviale Relation in~$\hBT_4$, womit
+    $\phi$ nach der universellen Eigeschaft von durch Erzeugern
+    und Relationen gegeben Gruppen einen wohldefinierten
+    Gruppenhomomorphismus definiert. Nun bildet~$\phi$ die
+    Untergruppe
+    \[ H\defeq\Spann[\big]{\bigl\{ \kappa \bigr\}
+        \cup \bigl\{ a_jb_j \Mid j\in\J \bigr\}}_{\BT_4}
+    \]
+    auf die Untergruppe $\Spann{A\cup\{\kappa\}}_{\hBT_4}$
+    ab, mit $\kappa\mapsto\kappa$ und $a_jb_j\mapsto a_j$
+    für alle $j\in\J$. Mithilfe der universellen Eigenschaft
+    der (nach \cref{ch1:freesubgroupsinhBT4}) freien Gruppe
+    $\Spann{A\cup\{\kappa\}}_{\hBT_4}$ folgert man leicht,
+    dass damit auch~$H$ frei von den obigen Elementen erzeugt wird.
+    Aus \cref{ch1:HNNeBT4} folgt insbesondere $\hBT_4\leq\BT_4$,
+    d.\,h. auch $H'\defeq\Spann{A\cup\{\kappa\}}_{\BT_4}$ ist frei
+    erzeugt von $A\cup\{\kappa\}$. Mit den universellen Eigenschaften
+    der freien Gruppen $H$ und~$H'$ erhalten wir sofort den
+    gewünschten Isomorphismus $H\to H'$, der die Behauptung zeigt.
+    \\
+\end{proof}
 
-\begin{thLemma}
+\begin{thLemma}\label{ch1:presofAkappatau}
     Die von $A\cup\{\kappa,\tau\}$ in $\BT$ erzeugte Untergruppe
     besitzt folgende Präsentation:
-    \[ \gpres[{[\big]}]{A\cup\{\kappa,\tau\}}%
+    \[ \mathcal{A} \defeq
+        \gpres[{[\big]}]{A\cup\{\kappa,\tau\}}%
                    {\{ \cu[\kappa, \omega\inv\tau\omega]
                         \nMid \omega\in\Ea \}}
     . \]
 \end{thLemma}
 
-TODO: Beweisskizze (Schritt~1 ausführlich, Schritte des
-Widerspruchsbeweises danach nur sehr knapp, eventuell einen
-davon ausgeführt)
+\begin{thLemma}\label{ch1:wordsinAkappatau}
+    Zu jedem $w'\in\mathcal A$ (mit $\mathcal A$ aus
+    \cref{ch1:presofAkappatau}) gibt es ein
+    gibt es ein Wort~$w$ auf $A\cup\{\kappa,\tau\}$
+    mit $w'=w$ in~$\mathcal A$, so dass $w$ kein
+    Teilwort der Form $\tau^\epsilon\omega\kappa^\eta$
+    mit $\epsilon,\eta\in\{\pm1\}$ und $\omega\in\Ea$ enthält.
+\end{thLemma}
+%
+\begin{proof}
+    Sei $w'$ ein (frei reduziertes) Wort aus~$\mathcal A$
+    und seien $y_1,\dots,y_n\in A\cup\{\kappa,\tau\}$,
+    $\epsilon_1,\dots,\epsilon_n\in\{\pm1\}$
+    mit
+    \[ w' \equiv
+        y_1^{\epsilon_1}y_2^{\epsilon_2}\cdots y_n^{\epsilon_n}
+    . \]
+    Die Zahl
+    \[ c(w') \defeq \sum_{j=1}^n \delta_{y_j,\tau}
+                        \sum_{\ell=j+1}^n \delta_{y_\ell,\kappa}
+        \;\in\,\N
+    \]
+    (wobei $\delta_{y,y'} = 1$ falls $y=y'$ und $\delta_{y,y'} = 0$ sonst)
+    beschreibt, wie oft~$\tau$ vor~$\kappa$ vorkommt.
+    Sei nun $w\in (A\cup\{\kappa,\tau\})^*$ mit $w'=w$ in~$\mathcal A$,
+    so dass $c(w)$ minimal ist. Wir zeigen nun, dass $w$ das gesuchte
+    Wort ist.
+    
+    Angenommen, es gibt $\epsilon,\tau\in\{\pm1\}$ und $\omega\in\Ea$,
+    so dass
+    \[ w \equiv w_0 \, \tau^\epsilon\omega\kappa^\eta \, w_1 \]
+    (für geeignete Wörter $w_0,w_1$) gilt. Nach Definition
+    von $\mathcal A$ gilt $\cu[\kappa, \omega\inv\tau\omega] = 1
+    \in\mathcal A$ und durch Ausschreiben dieser Gleichung und einfache
+    Umformungen erhalten wir:
+    \[ \tau^\epsilon\omega\kappa^\eta
+        = \omega\kappa^\eta\omega\inv\tau^\epsilon\omega
+        \in\mathcal A
+    . \]
+    Es folgt
+    \[ w = w_0 \, \omega\kappa^\eta\omega\inv\tau^\epsilon\omega \, w_1
+        \eqdef w''
+    \]
+    in~$\mathcal A$, aber offenbar gilt dann $c(w'') < c(w)$, im
+    Widerspruch zur Wahl von~$w$.
+    \\
+\end{proof}
+
+\begin{proof}[Beweisskizze von \cref{ch1:wordsinAkappatau}]
+    \mycref{ch1:BTproperties:boone} zeigt, dass die kanonische
+    Abbildung
+    \[ A\cup\{\kappa,\tau\}\to\Spann{A\cup\{\kappa,\tau\}}_{\BT} \]
+    die Relationen aus $\mathcal A$ erhält und somit nach der universellen
+    Eigschaft von durch Erzeuger und Relationen gegeben Gruppen einen
+    Homomorphismus 
+    \[ \phi\colon\mathcal{A}\to\Spann{A\cup\{\kappa,\tau\}}_{\BT} \]
+    induziert. Offensichtlich ist~$\phi$ surjektiv, d.\,h. es bleibt
+    die Injektivität von~$\phi$ zu zeigen. Sei also
+    $w\in\mathcal A$ mit $\phi(w) \mathrel{\glqq{=}\grqq}
+    w = 1 \in\Spann{A\cup\{\kappa,\tau\}}_{\BT}$.
+    Nach \cref{ch1:wordsinAkappatau} können wir o.\,E. annehmen, dass
+    $w$ kein Teilwort der Form $\tau^\epsilon\omega\kappa^\eta$ mit
+    $\epsilon,\eta\in\{\pm1\}$ und $\omega\in\Ea$ enthält.
+    
+    Man kann nun zeigen, dass die Annahme $w\not\equiv 1$ zu einem
+    Widerspruch führt. Der sehr technische und längliche Beweis
+    kann bei Rotman\cite[Lemma~12.24]{bookc:rotman95} nachgelesen werden;
+    wir skizzieren hier nur grob das Vorgehen von Rotman:
+    \begin{itemize}
+        \item
+            Wir haben $w = 1\in\Spann{A\cup\{\kappa,\tau\}}_{\BT}$
+            nach Wahl von~$w$.\\
+            Angenommen, es ist $w$ \emph{nicht} das leere Wort.
+            
+        \item
+            Zuerst folgt dann aus \cref{ch1:freesubgroupsinBT}, dass
+            $w$ sowohl $\tau$ als auch $\kappa$ enthalten muss.
+            
+        \item
+            Das Lemma von Britton \pcref{ch0:brittonslemma} liefert
+            dann einen $\kappa$-pinch $\kappa^\eta V\!\kappa^{-\eta}$
+            in~$w$, wobei
+            \[ D\in \bigl(\{hr_ih\inv \Mid i\in I\}
+                \cup\{hxh\inv,\, hq\inv h\inv q_1\tau q_1\inv hqh\inv\}
+                \bigr)^*
+                \qundq
+                D = V \in\BT_3
+            . \]
+            
+        \item
+            Man kann nun zeigen, dass $D$ so gewählt werden kann,
+            dass $D$ keinen $\tau$-pinch enthält, und außerdem
+            kann man zeigen, dass $V$ keinen $\tau$-pinch enthält.
+            
+        \item
+            Aus dem letzten Schritt kann man (unter anderem mit mehrmaliger
+            Anwendung des Lemmas von Britton) herleiten, dass sowohl
+            $V$ als auch~$D$ mindestens ein~$\tau$ enthalten.
+            
+        \item
+            Indem man das letzte Vorkommen von~$\tau$ in~$V$ betrachtet
+            und $V=D\in\BT_3$ benutzt, kann man zeigen: $V$~endet auf
+            ein Wort $\tau^\epsilon\omega$ mit $\epsilon\in\{\pm1\}$ und
+            $\omega\in\Ea$.
+            
+        \item
+            Aus den vorherigen Schritten erhalten wir:
+            $w$~enthält den $\kappa$-pinch $\kappa^\eta V\!\kappa^{-\eta}$
+            und $V$ endet auf~$\tau^\epsilon\omega$, d.\,h. es gilt
+            \[ w \equiv w_0 \, \kappa^\eta V\!\kappa^{-\eta} \, w_2
+                 \equiv w_0 \, \kappa^\eta w_1 \,
+                 \tau^\epsilon\omega\kappa^{-\eta} \, w_2
+            \]
+            für geeignete Wörter~$w_0,w_1,w_2$.
+            Aber dies ist ein Widerspruch dazu, dass $w$ kein Teilwort
+            der Form $\tau^\epsilon\omega\kappa^{-\eta}$ enthält, womit
+            die Annahme falsch gewesen sein muss, d.\,h. es gilt doch schon
+            \[ w\equiv 1  , \]
+            und damit ist $\phi$ auch injektiv.
+            \\
+            \qedhere
+    \end{itemize}
+\end{proof}
 
 \begin{thLemma}\label{ch1:HNNeBT6}
     Es ist $\BT_6$ eine HNN-Erweiterung mit Basis~$\BT_5$.
