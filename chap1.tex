@@ -211,6 +211,7 @@ wir außerdem $S_+ \defeq S\cup\{h\}$.
 \end{proof}
 
 \begin{thDef}[Erweiterungen von \texorpdfstring{$\BT$}{B}]
+    \label{ch1:BT6fromBT}
     Sei $B \defeq \{b_1,\dots,b_m\}$ eine Menge neuer Symbole
     und seien weiter $d,\sigma$ neue Symbole. Dann definieren
     wir sukzessive Erweiterungen von~$\BT$ wie folgt:
@@ -246,7 +247,7 @@ wir außerdem $S_+ \defeq S\cup\{h\}$.
 \pagebreak[2]
 \begin{thProposition}[\texorpdfstring{$R\leq \BT_6$}%
                         {R als Untergruppe von B6}]\hfill
-    \label{ch1:RinB6}
+    \label{ch1:RinBT6}
     %
     \begin{enumerate}[1.]
         \item 
@@ -518,11 +519,99 @@ wir außerdem $S_+ \defeq S\cup\{h\}$.
     \end{itemize}
 \end{proof}
 
+\begin{thLemma}\label{ch1:conjugatesinBT5}
+    Sei $\omega\in\Ea$ und seien $\omega_b \defeq \tr^A_B(\omega)$,
+    $\omega_u \defeq \tr^A_U(\omega)$. Dann gilt in~$\BT_5$:
+    \begin{align*}
+        \kappa\inv \omega_b \kappa &= \omega_b\omega_u  \\
+        d \omega d\inv &= \omega\omega_b
+    . \end{align*}
+\end{thLemma}
+%
+\begin{proof}
+    Dies folgt leicht aus den in~$\BT_5$ gültigen Relationen.
+    Die Details werden dem Leser zur Übung überlassen.
+    \\
+\end{proof}
+
 \begin{thLemma}\label{ch1:HNNeBT6}
     Es ist $\BT_6$ eine HNN-Erweiterung mit Basis~$\BT_5$.
 \end{thLemma}
+%
+\begin{proof}
+    Wir haben
+    \[ M_\sigma = \{ (\kappa,\kappa),\, (\tau,\tau d) \}
+            \cup \{ (a,a) \Mid a\in A \}
+    . \]
+    Wir betrachten also
+    \begin{align*}
+        \phi\colon\Spann{A\cup\{\kappa,\tau\}}_{\BT_5}
+        &\to \Spann{A\cup\{\kappa,\tau d\}}_{\BT_5}
+        \\
+        \tau &\mapsto \tau d    \\
+        \phi\vert_{A\cup\{\kappa\}} &\defeq \id_{A\cup\{\kappa\}}
+    \end{align*}
+    und müssen zunächst zeigen, dass $\phi$ einen Gruppenhomomorphismus
+    induziert. Nach \cref{ch1:presofAkappatau} (und wegen $\BT\leq\BT_5$)
+    genügt es dafür zu zeigen: für alle $\omega\in\Ea$ gilt
+    \[  \cu[\kappa, \omega\inv\tau d\omega]
+        = \phi(\cu[\kappa, \omega\inv\tau\omega])
+        = 1 \in\BT_5
+    . \]
+    Sei also $\omega\in\Ea$ und seien $\omega_b \defeq \tr^A_B(\omega)$,
+    $\omega_u \defeq \tr^A_U(\omega)$. Dann gilt:
+    \begin{align*}
+        \cu[\kappa, \omega\inv\tau d\omega]
+        &=
+        \expandafter\bigl\cu[\kappa, \omega\inv\tau (d\omega d\inv) d\bigr]
+        \overset{\scriptscriptstyle(1)}=
+        \cu[\kappa, \omega\inv\tau \omega\omega_b d]
+        \\
+        &= \bigl(\omega\inv\tau\omega\omega_b d\kappa\bigr)\inv
+            \kappa \omega\inv\tau\omega\omega_b d
+        \\
+        &\overset{\scriptscriptstyle(2)}=
+        \bigl(\omega\inv\tau\omega\kappa(\kappa\inv\omega_b\kappa) d\bigr)\inv
+            \omega\inv\tau\omega\kappa\omega_b d
+        \\
+        &\overset{\scriptscriptstyle(3)}=
+        \bigl(\omega\inv\tau\omega\kappa\omega_b\omega_u d\bigr)\inv
+            \omega\inv\tau\omega\kappa\omega_b d
+        \\
+        &\overset{\scriptscriptstyle(4)}= 1
+    , \end{align*}
+    wobei wir Folgendes benutzt haben:
+    \begin{enumerate}[(1), itemsep=0pt, topsep=0.5\baselineskip]
+        \item
+            \cref{ch1:conjugatesinBT5}.
+        \item
+            Es kommutiert $\kappa$ nach Definition von~$\BT_5$ mit~$d$
+            und nach \mycref{ch1:BTproperties:boone} mit
+            $\omega\inv\tau\omega$.
+        \item
+            \cref{ch1:conjugatesinBT5}.
+        \item
+            Nach Konstruktion gilt gerade $\omega_u\in E$, wobei
+            $E$ die Menge der Relationen von~$R$ war, und diese Relationen
+            sind in~$\BT_5$ ebenfalls gültig, d.\,h. $\omega_u = 1\in\BT_5$.
+    \end{enumerate}
+    Mit der universellen Eigenschaft von durch Erzeugern und Relationen
+    gegebenen Gruppen sieht man sofort ein, dass
+    \begin{align*}
+        \psi\colon \BT_5 &\to \BT_5
+        \\
+        \mathllap{B\cup U\cup\{d\}} \ni y &\mapsto 1     \\
+        \psi\vert_{\BT} &\defeq \id_{\BT}
+    \end{align*}
+    einen wohldefinierten Gruppenhomomorphismus induziert. Außerdem gilt
+    offenbar $\im(\psi) \subset \Spann{A\cup\{\kappa,\tau\}}_{\BT_5}$
+    und man sieht ebenfalls sofort, dass dann die entsprechende Einschränkung
+    von~$\psi$ ein Inverses zu~$\phi$ liefert, d.\,h. $\phi$ ist ein
+    Isomorphismus und dies zeigt die Behauptung.
+    \\
+\end{proof}
 
-\begin{proof}[Beweis von \cref{ch1:RinB6}]
+\begin{proof}[Beweis von \cref{ch1:RinBT6}]
     Die Lemmata \ref{ch1:HNNeBT4}, \ref{ch1:HNNeBT5} und
     \ref{ch1:HNNeBT6} zeigen den ersten Teil. Der zweite
     Teil folgt mittels $R\leq \BT \fprod R = \hBT_4$ und
@@ -530,12 +619,107 @@ wir außerdem $S_+ \defeq S\cup\{h\}$.
     dem ersten Teil.\\
 \end{proof}
 
-\begin{thProposition}\label{ch1:B6fp}
+\begin{thProposition}\label{ch1:BT6fp}
     Die Gruppe $\BT_6$ ist endlich präsentiert.
 \end{thProposition}
+%
+\begin{proof}
+    Zunächst sehen wir direkt an der Konstruktion von~$\BT_6$
+    (Definitionen \ref{ch1:BT} und~\ref{ch1:BT6fromBT}), dass
+    $\BT_6$ endlich erzeugt ist von
+    \[ \{q,h\} \cup S\cup Q
+        \cup \{r_i\Mid i\in I\}\cup\{x,\kappa,\tau\}
+        \cup U \cup B \cup \{d,\sigma\}
+    \]
+    und dass
+    \[ \underbrace{\Delta \cup \bigcup\nolimits_{j=1}^6 \Delta_j}_{
+        \eqdef\widetilde\Delta\;\,\mathrlap{\text{endl. viele Rel.}}
+        } \surround{\quad}\cup E
+    \]
+    alle Relationen von~$\BT_6$ umfasst. Um nun einzusehen,
+    dass $\BT_6$ sogar endlich präsentiert ist, genügt es zu zeigen,
+    dass die Relationen in~$E$ schon von denen in~$\widetilde\Delta$
+    impliziert werden.
+    
+    Sei also $\omega_u\in E$ und seien $\omega\defeq\tr^U_A(\omega_u)$,
+    $\omega_b\defeq\tr^U_B(\omega)$. Wir zeigen zuerst, dass
+    $\kappa$ mit $\omega\inv d\omega$ kommutiert:
+    \begin{align*}
+        \kappa\omega\inv d\omega
+        &=
+        \kappa\omega\inv (\tau\inv\omega\omega\inv\tau) d\omega
+        \\
+        &\overset{\scriptscriptstyle(1)}=
+        \omega\inv\tau\inv\omega\kappa \omega\inv
+            (\sigma\inv\tau\sigma)\omega
+        \\
+        &\overset{\scriptscriptstyle(2)}=
+        \omega\inv\tau\inv\sigma\inv
+            \omega\kappa \omega\inv\tau\omega\sigma
+        \\
+        &\overset{\scriptscriptstyle(3)}=
+        \omega\inv\tau\inv\sigma\inv
+            \omega\omega\inv\tau\omega\kappa\sigma
+        \\
+        &\overset{\scriptscriptstyle(4)}=
+        \omega\inv\tau\inv\sigma\inv\tau\sigma\omega\kappa
+        \\
+        &\overset{\scriptscriptstyle(5)}=
+        \omega\inv d\omega\kappa
+    , \end{align*}
+    wobei wir Folgendes benutzt haben:
+    \begin{enumerate}[(1), itemsep=0pt, topsep=0.5\baselineskip]
+        \item
+            \mycref{ch1:BTproperties:boone} und $\tau d =
+            \sigma\inv\tau\sigma$ (aus $\Delta_6$)
+        \item
+            Aus den Relationen in~$\Delta_6$ folgt: $\sigma$ kommutiert
+            mit~$\omega$ und mit~$\kappa$.
+        \item
+            \mycref{ch1:BTproperties:boone}
+        \item
+            Nochmal $\cu[\sigma, \omega] = 1$
+            und $\cu[\sigma, \kappa] = 1$.
+        \item
+            Nochmal $\tau d = \sigma\inv\tau\sigma$ in Form von
+            $\cu[\tau, \sigma] = d$.
+    \end{enumerate}
+    Nun erhalten wir:
+    \begin{align*}
+        \omega_b\omega_u
+        &\overset{\scriptscriptstyle(1)}=
+        \kappa\inv\omega_b\kappa
+        \\
+        &\overset{\scriptscriptstyle(2)}=
+        \kappa\inv\omega_b d\kappa d'
+        \\
+        &\overset{\scriptscriptstyle(3)}=
+        \kappa\inv \omega\inv d\omega \kappa d'
+        \\
+        &\overset{\scriptscriptstyle(4)}=
+        \omega\inv d\omega d'
+        \\
+        &\overset{\scriptscriptstyle(5)}=
+        \omega_b
+    , \end{align*}
+    wobei wir diesmal verwendet haben:
+    \begin{enumerate}[leftmargin=2.155cm, itemsep=0pt, topsep=0.5\baselineskip]
+        \item[(1),(3),(5)]
+            \cref{ch1:conjugatesinBT5}
+        \item[(2)]
+            $\cu[d, \kappa] = 1$ (aus $\Delta_5$)
+        \item[(4)]
+            $\cu[\kappa, \omega\inv d\omega] = 1$
+    \end{enumerate}
+    Es folgt
+    \[ \omega_u = 1  , \]
+    und wir haben nur Relationen aus~$\widetilde\Delta$ benutzt, um dies
+    zu zeigen.
+    \\
+\end{proof}
 
 \begin{proof}[Beweis von \cref{ch1:higman}]
-    Folgt direkt aus dem zweiten Teil von \cref{ch1:RinB6}
-    und \cref{ch1:B6fp}.
+    Folgt direkt aus dem zweiten Teil von \cref{ch1:RinBT6}
+    und \cref{ch1:BT6fp}.
     \\
 \end{proof}
