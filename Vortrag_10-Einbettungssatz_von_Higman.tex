@@ -13,8 +13,6 @@
 \usepackage{mathrsfs} % \mathscr
 \usepackage{amsthm}
 \usepackage{mathtools}
-%\usepackage[all]{xy}
-%\usepackage{tikz}
 
 \usepackage[autostyle]{csquotes}
 \usepackage[shortlabels]{enumitem}
@@ -146,10 +144,6 @@
 \MakeCategoryName{Group}
 \MakeCategoryName{Set}
 
-% make quantors that use \limits per default
-\DeclareMathOperator*{\Exists}{\exists}
-\DeclareMathOperator*{\forAll}{\forall}
-
 % define an 'abs', 'norm' and 'Spann' command
 \DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
 \DeclarePairedDelimiter{\norm}{\lVert}{\rVert}
@@ -199,15 +193,6 @@
 \defmathbbsymbols{Z Q C}
 \defmathbbsymbolsubs{N R}
 
-% quotient by means of groups/rings/vector spaces
-\newcommand{\Quot}[3][\big]{%
-\raisebox{2pt}{$\mathsurround=0pt\displaystyle #2$}\mkern-3mu%
-#1/%
-\mkern-3mu\raisebox{-3.5pt}{$\displaystyle #3$}%
-}
-
-\newcommand{\txtZQuot}[1]{\Z/#1\Z}
-
 % commutator
 \newcommand{\cu}{}
 \def\cu[#1,#2]{[#1,\,#2]}
@@ -227,13 +212,11 @@
 \newcommand{\inv}{^{-1}}
 \newcommand{\isum}[1][1]{\sum_{i=#1}}
 \newcommand{\J}{\setOneto{m}}
-\newcommand{\ksum}[1][1]{\sum_{k=#1}}
 \newcommand{\mr}{\mathrm}
 \newcommand{\scdot}{\,\cdot\,}
 \newcommand{\setOneto}[1]{\{1,\ldots,#1\}}
 \newcommand{\setZeroto}[1]{\{0,\ldots,#1\}}
 \newcommand{\surround}[2]{#1#2#1}
-\newcommand{\tra}{\tr_a}
 \newcommand{\thalf}{\tfrac{1}{2}}
 
 % some text shortcuts
@@ -243,21 +226,6 @@
 \qTXq{und}
 \qqTXqq{und}
 
-%
-\newcommand{\Achtung}{\emph{Achtung:} }
-
-%%% use some tikz libraries
-%%\usetikzlibrary{arrows,calc,intersections}
-
-%%% xy tip selection (ComputerModern)
-%%\SelectTips{cm}{}
-%%\UseTips
-%%
-%%% other xy specific settings
-%%\newcommand{\xyhookdirspacing}{4pt}
-%%\newdir{`}{\dir^{(}} 
-%%\newdir{ `}{{}*!/-\xyhookdirspacing/\dir{`}}
-%%\iffalse)\fi % fix syntax highlighting
 
 % listing with -- is nicer than with bullets 
 \setlist[itemize,1]{label=--}

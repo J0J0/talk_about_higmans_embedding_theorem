@@ -1,7 +1,12 @@
 
 \chapter{Vorwort, Notation und Vorbereitungen}
 \section{Einleitung}
-(\dots) % TODO
+Im letzten Vortrag haben wir gesehen, wie man das \emph{Lemma von Boone}
+beweist. Die von Boone konstruierte Gruppe werden wir nun verwenden,
+um den \emph{Einbettungssatz von Higman} \pcref{ch1:higman} zu beweisen.
+Der Beweis in dieser Form geht auf Aanderaa zurück\cite{paper:aanderaa73},
+aber wir halten uns im Folgenden an die Fassung, wie sie bei
+Rotman\cite{bookc:rotman95} (in Kapitel~12) zu finden ist.
 
 \section{Notation}
 In diesem Skript wird folgende Notation verwendet:
@@ -9,9 +14,6 @@ In diesem Skript wird folgende Notation verwendet:
     \item
         Echt enthalten wird durch $\subsetneq$ gekennzeichnet,
         enthalten oder gleich durch $\subset$.
-    
-    %\item
-    %    Die \emph{natürlichen Zahlen $\N$} beginnen mit $0$.
         
     \item
         Mit $\gadj{G}{X}{Y}$ bezeichnen wir das Hinzufügen von Erzeugern und
@@ -26,9 +28,15 @@ In diesem Skript wird folgende Notation verwendet:
         so steht $w \equiv w'$ für \enquote{die Wörter sind Symbol für Symbol
         identisch} und $w = w'$ für \enquote{die Wörter repräsentieren in der
         (Halb-)Gruppe dasselbe Element}.
+
+    \item
+        Für eine Menge von Symbolen~$S$ bezeichner $S^*$ die Menge aller Wörter
+        auf~$S$ (einschließlich der (formal) Inversen zu den Symbolen aus~$S$).
+        Ein Wort, das nur Symbole aus~$S$ enthält, nennen wir
+        \emph{positives Wort}.
 \end{itemize}
 
-\section{HNN-Erweiterungen}
+\section{Erinnerung: HNN-Erweiterungen}
 \begin{thDef}[HNN-Erweiterung]
     Seien $G,G'$ Gruppen und $P$ eine nicht-leere Menge. Dann ist \emph{$G$
     eine HNN-Erweiterung mit Basis~$G'$ und stabilen Buchstaben~$P$}, falls
@@ -81,6 +89,18 @@ In diesem Skript wird folgende Notation verwendet:
     die von~$P$ in~$G$ erzeugte Untergruppe frei mit Basis~$P$.
 \end{thProposition}
 
+\begin{thDef}[pinch]
+    Sei $G$ eine HNN-Erweiterung mit Basis~$G'$ und stabilen Buchstaben~$P$.
+    Sei $p\in P$. Ein \emph{$p$-pinch} ist ein Wort $p^\epsilon w p^{-\epsilon}$
+    mit $\epsilon\in\{\pm1\}$ und $w\in G'$, so dass
+    \begin{itemize}[topsep=0pt]
+        \item im Fall $\epsilon = -1$ gilt:
+            $p\inv wp\in\Spann{\{ a \Mid (a,b)\in M_p\}}_{G'}$.
+        \item im Fall $\epsilon = +1$ gilt:
+            $pwp\inv\in\Spann{\{ b \Mid (a,b)\in M_p\}}_{G'}$.
+    \end{itemize}
+\end{thDef}
+
 \begin{thLemma}[Lemma von Britton]
     \label{ch0:brittonslemma}
     %
@@ -89,4 +109,5 @@ In diesem Skript wird folgende Notation verwendet:
     das $w=1$ in~$G$ gilt. Dann enthält $w$ einen pinch als Teilwort.
 \end{thLemma}
 
-Beweise: siehe Rotman\cite{bookc:rotman95}. % TODO
+Beweise der Propositionen und des Lemmas:
+siehe Rotman\cite[Kapitel~11]{bookc:rotman95}.

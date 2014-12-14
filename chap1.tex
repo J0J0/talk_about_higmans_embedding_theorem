@@ -22,13 +22,16 @@ Den Rest des Skripts werden wir nun damit verbringen, diesen Satz zu beweisen.
         Sei ab jetzt eine rekursiv präsentierte Gruppe
         \[ R = \gpres{u_1,\dots,u_m}{E} \]
         fixiert und sei $U \defeq \{u_1,\dots,u_m\}$.
+        
     \item
         Aus notationellen Gründen führen wir eine weitere Menge
-        $A \defeq \{a_1,\dots,a_m\}$ von neuen Symbolen ein und bezeichnen mit
-        $\tra$ den eindeutigen Monoid-Isomorphismus (vom Monoid aller
-        positiven Wörter auf $\{u_1,\dots,u_m\}$ in das Monoid aller positiven
-        Wörter auf $\{a_1,\dots,a_m\}$) mit $u_j\mapsto a_j$ für alle
-        $j\in\setOneto{m}$. Sei $\Ea \defeq \tra(E)$.
+        $A \defeq \{a_1,\dots,a_m\}$ von neuen Symbolen ein.
+        Mit $\tr^U_A$ bezeichnen wir den eindeutigen Monoid-Isomorphismus
+        (vom Monoid~$U^*$ in das Monoid~$A^*$) mit $u_j\mapsto a_j$ für alle
+        $j\in\setOneto{m}$. Analog seien $\tr^A_U$ und (für die weiter
+        unten eingeführte Menge~$B$) $\tr^U_B,\tr^A_B,\tr^B_U$ definiert.
+        Sei außerdem $\Ea \defeq \tr^U_A(E)$.
+        
     \item
         Sei weiter $T$~eine Turingmaschine, die $\Ea$ aufzählt,\footnote{%
             So eine Turingmaschine~$T$ existiert offenbar, denn nach
@@ -63,7 +66,7 @@ Den Rest des Skripts werden wir nun damit verbringen, diesen Satz zu beweisen.
     \[ w\in\Ea \iff hq_1wh = q \in\Gamma  . \]
 \end{thProposition}
 %
-Siehe Rotman\cite{bookc:rotman95}. % TODO
+Beweis: siehe Rotman\cite[Lemma~12.4]{bookc:rotman95}.
 
 \pagebreak[2]
 Im Folgenden seien $\Gamma$ und alle zur Präsentation gehörenden Daten
@@ -279,8 +282,8 @@ wir außerdem $S_+ \defeq S\cup\{h\}$.
     mit $w=1\in\BT_3$, in dem $\tau$ vorkommt. Sei außerdem $w$ von
     minimaler Länge mit diesen Eigenschaften.
     Weil $\BT_3$ eine HNN-Erweiterung mit Basis~$\BT_2$ und stabilem
-    Buchstaben~$\tau$ ist, gibt es dann nach dem Lemma von Britton einen
-    $\tau$-pinch in~$w$, d.\,h. es gilt
+    Buchstaben~$\tau$ ist, gibt es dann nach dem Lemma von Britton
+    \pcref{ch0:brittonslemma} einen $\tau$-pinch in~$w$, d.\,h. es gilt
     \[ w \equiv w_0 \, \tau^\epsilon w_1 \tau^{-\epsilon} \, w_2 \]
     für $\epsilon\in\{\pm1\}$, geeignete Wörter $w_0,w_2$ und
     ein Wort $w_1$, welches in $\BT_2$ gleich einem Wort aus
@@ -406,7 +409,7 @@ wir außerdem $S_+ \defeq S\cup\{h\}$.
 %
 \begin{proof}
     Sei $w'$ ein (frei reduziertes) Wort aus~$\mathcal A$
-    und seien $y_1,\dots,y_n\in A\cup\{\kappa,\tau\}$,
+    und seien $y_1,\dots,y_n\in A\cup\{\kappa,\tau\}$ sowie
     $\epsilon_1,\dots,\epsilon_n\in\{\pm1\}$
     mit
     \[ w' \equiv
@@ -443,7 +446,7 @@ wir außerdem $S_+ \defeq S\cup\{h\}$.
     \\
 \end{proof}
 
-\begin{proof}[Beweisskizze von \cref{ch1:wordsinAkappatau}]
+\begin{proof}[Beweisskizze von \cref{ch1:presofAkappatau}]
     \mycref{ch1:BTproperties:boone} zeigt, dass die kanonische
     Abbildung
     \[ A\cup\{\kappa,\tau\}\to\Spann{A\cup\{\kappa,\tau\}}_{\BT} \]
@@ -611,15 +614,22 @@ wir außerdem $S_+ \defeq S\cup\{h\}$.
     \\
 \end{proof}
 
+{\def\myTMP{Beweis von Proposition~\ref{ch1:RinBT6}} % \cref doesn't work :/
+here
 \begin{proof}[Beweis von \cref{ch1:RinBT6}]
+    \expandafter\belowpdfbookmark\expandafter{\expandafter\myTMP}{Beweis42}
+    %
     Die Lemmata \ref{ch1:HNNeBT4}, \ref{ch1:HNNeBT5} und
     \ref{ch1:HNNeBT6} zeigen den ersten Teil. Der zweite
     Teil folgt mittels $R\leq \BT \fprod R = \hBT_4$ und
     mehrmaliger Anwendung von \cref{ch0:hnnembedding} aus
     dem ersten Teil.\\
 \end{proof}
+}
 
-\begin{thProposition}\label{ch1:BT6fp}
+\begin{thProposition}[Endliche Präsentation von \texorpdfstring{$\BT_6$}{B6}]
+    \label{ch1:BT6fp}
+    %
     Die Gruppe $\BT_6$ ist endlich präsentiert.
 \end{thProposition}
 %
@@ -718,8 +728,11 @@ wir außerdem $S_+ \defeq S\cup\{h\}$.
     \\
 \end{proof}
 
+{\def\myTMP{Beweis von Satz~\ref{ch1:higman}} % \cref doesn't work :/
 \begin{proof}[Beweis von \cref{ch1:higman}]
-    Folgt direkt aus dem zweiten Teil von \cref{ch1:RinBT6}
-    und \cref{ch1:BT6fp}.
+    \expandafter\belowpdfbookmark\expandafter{\expandafter\myTMP}{Beweis4242}
+    %
+    Der Einbettungssatz von Higman folgt nun aus dem zweiten Teil von
+    \cref{ch1:RinBT6} und \cref{ch1:BT6fp}.
     \\
 \end{proof}
