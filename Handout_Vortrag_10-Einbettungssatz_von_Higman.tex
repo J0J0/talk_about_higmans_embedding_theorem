@@ -1,4 +1,4 @@
-\documentclass[11pt,a4paper,ngerman,DIV=11,bibliography=totoc,titlepage=false]{scrreprt}
+\documentclass[11pt,a4paper,ngerman,DIV=11]{scrartcl}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% packages
@@ -14,6 +14,7 @@
 \usepackage{amsthm}
 \usepackage{mathtools}
 
+\usepackage{tikz}
 \usepackage[autostyle]{csquotes}
 \usepackage[shortlabels]{enumitem}
 \usepackage[numbers,sort&compress]{natbib}
@@ -24,7 +25,7 @@
 \usepackage[lowtilde]{url}
 \usepackage[pdftex,bookmarks,colorlinks=false,pdfborder={0 0 0},%
             pdftitle={Seminar: Das Wortproblem - %
-                      Vortrag 10: Der Einbettungssatz von Higman},%
+                      Handout zu Vortrag 10: Der Einbettungssatz von Higman},%
             pdfauthor={Johannes Prem}]{hyperref}
 %
 \usepackage{cleveref}
@@ -37,12 +38,6 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% macro definitions and other things
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-% don't reset footnote numbers
-\makeatletter
-\@removefromreset{footnote}{chapter}
-\makeatother
-
 
 % set the url style (especially for the bibliography)
 \urlstyle{sf}
@@ -68,18 +63,18 @@
 
 % style for /all/ theorem like environments
 \newtheoremstyle{mythms}
- {15pt}% space above
- {12pt}% space below 
+ {5pt}% space above
+ {7pt}% space below 
  {}% body font
  {}% indent amount
  {\bfseries}% theorem head font
  {.}% punctuation after theorem head
- {0.6cm plus 0.25cm minus 0.1cm}% space after theorem head (\newline possible)
+ {0.3cm plus 0.05cm minus 0.1cm}% space after theorem head (\newline possible)
  {}% theorem head spec 
  
 % set style and define thm like environments
 \theoremstyle{mythms}
-\newtheorem{globalnum}{DUMMY DUMMY DUMMY}[chapter]
+\newtheorem{globalnum}{DUMMY DUMMY DUMMY}[section]
 \newtheorem{thDef}[globalnum]{Definition}
 \newtheorem{thNotation}[globalnum]{Notation}
 \newtheorem{thKonstruktionSetup}[globalnum]{Konstruktion/Setup}
@@ -88,6 +83,9 @@
 \newtheorem{thLemma}[globalnum]{Lemma}
 \newtheorem{thKorollar}[globalnum]{Korollar}
 
+\newtheorem{thDefProposition}[globalnum]{Definition/Proposition}
+
+\newtheorem{thAufgabe}[globalnum]{Aufgabe}
 \newtheorem{thSetup}[globalnum]{Setup}
 \newtheorem{thErinnerung}[globalnum]{Erinnerung}
 \newtheorem{thErinnerDef}[globalnum]{Erinnerung/Definition}
@@ -228,10 +226,11 @@
 
 
 % listing with -- is nicer than with bullets 
-\setlist[itemize,1]{label=--}
+\setlist[itemize,1]{label=--,topsep=2pt,parsep=0pt,itemsep=2pt,leftmargin=2em}
 
-% start at chapter 0
-\setcounter{chapter}{-1}
+%
+\setkomafont{section}{\normalfont\large}
+\pagestyle{empty}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% document
@@ -239,17 +238,15 @@
 
 \begin{document}
 
-\input{titlepage}
-\input{chap0}
+\input{title}
+%\input{chap0}
 \input{chap1}
 
-\appendix
+%\enlargethispage{2cm}
+\small
+\nocite{bookc:rotman95}
+\nocite{paper:aanderaa73}
 \bibliographystyle{plaindin}
 \bibliography{bibsources}
 
 \end{document}
-
-
-
-
-

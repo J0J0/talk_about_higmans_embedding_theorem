@@ -1,4 +1,5 @@
-\chapter{Der Einbettungssatz von Higman}
+%\section{Der Einbettungssatz von Higman}
+\setcounter{section}{1}
 \begin{thDef}[rekursiv präsentiert]
     Sei $R$ eine Gruppe. Dann ist $R$ \emph{rekursiv präsentiert},
     falls $R$ endlich erzeugt ist und es eine Präsentation
@@ -14,74 +15,39 @@
     eingebettet werden.
 \end{thSatz}
 
-Den Rest des Skripts werden wir nun damit verbringen, diesen Satz zu beweisen.
-
-\begin{thSetup}\hfill
+\begin{thSetup}
+    Sei ab jetzt eine rekursiv präsentierte Gruppe
+    $R = \gpres{u_1,\dots,u_m}{E}$
+    fixiert.
     \begin{itemize}
-    \item 
-        Sei ab jetzt eine rekursiv präsentierte Gruppe
-        \[ R = \gpres{u_1,\dots,u_m}{E} \]
-        fixiert und sei $U \defeq \{u_1,\dots,u_m\}$.
-        
-    \item
-        Aus notationellen Gründen führen wir eine weitere Menge
-        $A \defeq \{a_1,\dots,a_m\}$ von neuen Symbolen ein.
-        Mit $\tr^U_A$ bezeichnen wir den eindeutigen Monoid-Isomorphismus
-        (vom Monoid~$U^*$ in das Monoid~$A^*$) mit $u_j\mapsto a_j$ für alle
-        $j\in\setOneto{m}$. Analog seien $\tr^A_U$ und (für die weiter
-        unten eingeführte Menge~$B$) $\tr^U_B,\tr^A_B,\tr^B_U$ definiert.
-        Sei außerdem $\Ea \defeq \tr^U_A(E)$.
-        
-    \item
-        Sei weiter $T$~eine Turingmaschine, die $\Ea$ aufzählt,\footnote{%
-            So eine Turingmaschine~$T$ existiert offenbar, denn nach
-            Voraussetzung gibt es eine Turingmaschine, die $E$ aufzählt,
-            und $E\rightsquigarrow\Ea$ ist nur eine Umbenennung der
-            Symbole.%
-        }
-        sei $S = \{s_0,\dots,s_M\} \supset A$ ihr Eingabealphabet
-        (wobei $s_0$ das \enquote{leeres Band}-Zeichen sei) und sei
-        $Q = \{q_0,\dots,q_N\}$ ihre Zustandsmenge. Wir nehmen ohne
-        Einschränkung an, dass $q_0$ der einzige Endzustand sowie $q_1$ der
-        Anfangszustand von~$T$ ist.
+        \item
+            Sei $U \defeq \{u_1,\dots,u_m\}$ und seien
+            $A \defeq \{a_1,\dots,a_m\}$ sowie $B\defeq\{b_1,\dots,b_m\}$
+            Mengen mit neuen Symbolen.
+        \item
+            Sei $\tr^U_A\colon U^*\to A^*$ der Monoid-Isomorphismus
+            mit $u_j\mapsto a_j$ für alle $j\in\setOneto m$; seien
+            $\tr^A_U,\tr^U_B,\tr^A_B,\tr^B_U$ analog definiert.
+            Sei weiter $\Ea \defeq \tr^U_A(E)$.
+        \item
+            Sei $T$~eine Turingmaschine, die $\Ea$ aufzählt,
+            sei $S = \{s_0,\dots,s_M\} \supset A$ ihr Eingabealphabet
+            und sei $Q = \{q_0,\dots,q_N\}$ ihre Zustandsmenge (o.\,E.
+            mit einzigem Endzustand~$q_0$).
     \end{itemize}
 \end{thSetup}
 
-\begin{thProposition}[Halbgruppe assoziiert zu~$T$ {[Post]}]
-    \label{ch1:Gamma}
-    %
-    Es gibt eine Halbgruppe~$\Gamma$ mit der Präsentation
-    \begin{itemize}
-        \item Erzeuger:
-                $\{q,h\} \cup S\cup Q$ (mit neuen Symbolen $q,h\notin S\cup Q$),
-        \item Relationen:
-                $\{ F_iq_{i,1}G_i = H_iq_{i,2}K_i \Mid i\in I \}$,
-                wobei $I$ eine endliche Indexmenge ist und für alle
-                $i\in I$ gilt:
-                $q_{i,1},q_{i,2}\in \{q\}\cup Q$ und $F_i,G_i,H_i,K_i$ sind
-                (möglicherweise leere) positive Wörter auf $S\cup\{h\}$,
-    \end{itemize}
-    und folgender Eigenschaft: Ist $w$ ein positives Wort auf~$S$, so
-    gilt 
-    \[ w\in\Ea \iff hq_1wh = q \in\Gamma  . \]
-\end{thProposition}
-%
-Beweis: siehe Rotman\cite[Lemma~12.4]{bookc:rotman95}.
-
-\pagebreak[2]
-Im Folgenden seien $\Gamma$ und alle zur Präsentation gehörenden Daten
-wie in~\cref{ch1:Gamma} fest gewählt. Zur Vereinfachung der Notation setzen
-wir außerdem $S_+ \defeq S\cup\{h\}$.
-
-\begin{thDef}[Variante von Boones Gruppe]
+\begin{thDefProposition}[Variante von Boones Gruppe]
     \label{ch1:BT}
     %
-    Sei die Gruppe $\BT$ gegeben durch:
+    Die Gruppe~$\BT$ ist gegeben durch
     \begin{itemize}
         \item Erzeuger:
                 $\{q,h\} \cup S\cup Q
                 \cup \{r_i\Mid i\in I\}\cup\{x,\kappa,\tau\}$
-                (mit neuen Symbolen $r_i$ und $x,\kappa,\tau$).
+                {\small%
+                (mit neuen Symbolen $r_i$ und $q,h,x,\kappa,\tau$)}.
+        \smallskip
         \item Relationen:
                 $\Delta_1 \cup \Delta_2 
                     \cup \Delta_3 \cup \Delta$,
@@ -92,8 +58,7 @@ wir außerdem $S_+ \defeq S\cup\{h\}$.
                     \\[4pt]
                     \Delta_2 &\defeq \bigl\{ r_i\inv sxr_i = sx\inv
                         \Mid s\in S_+,\, i\in I \bigr\}
-                    \\
-                    &\qquad\cup \bigl\{
+                        \cup \bigl\{
                         r_i\inv F_i^\# q_{i,1}G_ir_i = H_i^\# q_{i,2}K_i
                         \Mid i\in I \bigr\}
                     \\[4pt]
@@ -106,118 +71,39 @@ wir außerdem $S_+ \defeq S\cup\{h\}$.
                         \cu[\kappa, hr_ih\inv] \Mid i\in I
                         \bigr\} \cup \bigl\{
                         \cu[\kappa, hxh\inv] \bigr\}
-                    \\
-                    &\qquad\cup \bigl\{
+                        \cup \bigl\{
                         \cu[\kappa,
                             hq\inv h\inv q_1\tau q_1\inv hqh\inv]
-                    \bigr\}
-                . \end{align*}
+                        \bigr\}
+                ; \end{align*}
     \end{itemize}
-    Dabei ist für ein Wort~$F = y_1^{\epsilon_1}\cdots y_n^{\epsilon_n}$
-    auf~$S_+$ (mit $\epsilon_j\in\{\pm1\}$ für alle $j\in\setOneto n$)
-    das Wort $F^\#$ definiert als $y_1^{-\epsilon_1}\cdots y_n^{-\epsilon_n}$.
-\end{thDef}
-
-\begin{thProposition}[Eigenschaften von \texorpdfstring{$\BT$}{B}]\hfill
-    \label{ch1:BTproperties}
-    %
-    \begin{enumerate}[1.]
-        \item\label{ch1:BTproperties:boone}
-            Die Gruppe~$\BT$ erfüllt folgende Eigenschaft:
-            Ist $w$ ein positives Wort auf~$S$, so gilt
-            \[ w\in\Ea \iff \cu[\kappa, w\inv\tau w] = 1 \in\BT
-            . \]
-
-        \item\label{ch1:BTproperties:hnn}
-            Es entsteht $\BT$ als eine Kette von HNN-Erweiterungen
-            {\thickmuskip=10mu%
-            \[ \BT_0 \leq \BT_1 \leq \hBT_2 \leq \BT_2 \leq \BT_3 \leq \BT
-            , \]}
-            wobei
-            \begin{align*}
-                \BT_0 &\defeq \gpres{x}{\emptyset}
-                \\
-                \BT_1 &\defeq \gadj{\BT_0}{S_+}{\Delta_1}
-                \\
-                \hBT_2 &\defeq \gadj{\BT_1}{Q\cup\{q\}}{\emptyset}
-                         = \BT_1 \fprod \gpres{Q\cup\{q\}}{\emptyset}
-                \\
-                \BT_2 &\defeq \gadj{\hBT_2}{\{r_i\Mid i\in I\}}{\Delta_2}
-                \\
-                \BT_3 &\defeq \gadj{\BT_2}{\{\tau\}}{\Delta_3}
-                \\
-                \BT &\mathrel{\makebox[\widthof{$\defeq$}]{\hfill$=$}}
-                        \gadj{\BT_3}{\{\kappa\}}{\Delta}
-            \end{align*}
-            und die stabilen Buchstaben jeweils die
-            neu hinzugefügten Symbole %TODO: \ref zur Def. von \gadj..!?
-            sind.
-    \end{enumerate}
-\end{thProposition}
-
-\begin{thBemerkung}[Notation bei Rotman]
-    Im Buch von Rotman\cite{bookc:rotman95} lauten die Bezeichnungen
-    der Gruppen $\BT_3$ bzw. $\BT$ leicht anders:
-    $\mathscr{B}_3'(T)$ bzw. $\mathscr{B}'(T)$. Die Gruppen
-    $\hBT_2$ und $\hBT_4$ (s.\,u.) haben bei Rotman keine explizite
-    Bezeichnung. Ansonsten wurde die Notation so gewählt, dass die
-    Nummerierung der Gruppen mit der von Rotman übereinstimmt.
-\end{thBemerkung}
-
-\begin{proof}[Beweisskizze von \cref{ch1:BTproperties}]
-    Zu~\ref{ch1:BTproperties:boone}: Wir betrachten die bei Rotman 
-    in Kapitel~12 überhalb von Lemma~12.7 definierte Gruppe~$\mathscr{B}(T)$
-    (wobei zu beachten ist, dass das dortige $s_{M-1}$ unserem $s_M$
-    und das dortige $s_M$ unserem $h$ entspricht).
-    Durch Vergleich der Präsentationen der Gruppen $\mathscr{B}(T)$
-    und~$\BT$ sieht man leicht mithilfe der universellen Eigenschaft
-    von durch Erzeuger und Relationen gegeben Gruppen ein, dass man
-    zueinander inverse Gruppenhomomorphismen $\phi\colon\mathscr{B}(T)
-    \to\BT$ und $\psi\colon\BT\to\mathscr{B}(T)$ mit
-    \begin{align*}
-        \phi(\tau)   &= q_1\inv hth\inv q_1
-        ,&
-        \psi(t)      &= h\inv q_1\tau q_1\inv h
-        \\
-        \phi(\kappa) &= hkh\inv
-        ,&
-        \psi(k)      &= h\inv\kappa h
-    \end{align*}
-    konstruieren kann. Das \emph{Lemma von Boone}
-    (Rotman\cite[Lemma~12.7]{bookc:rotman95}) liefert dann
-    (in der Notation von Rotman für $\Sigma \equiv h\inv q_1wh$):
+    dabei sind $F_i,G_i,H_i,K_i$ (von $T$ abhängige) positive Wörter
+    auf~$S_+\defeq S\cup\{h\}$ und für
+    $F = y_1^{\epsilon_1}\cdots y_n^{\epsilon_n}$ ist
+    $F^\# = y_1^{-\epsilon_1}\cdots y_n^{-\epsilon_n}$.
     Für ein positives Wort~$w$ auf~$S$ gilt:
-    \[ hq_1wh = q \in\Gamma
-        \qiffq
-        \cu[k, (h\inv q_1wh)\inv t (h\inv q_1wh)] = 1
-        \in\mathscr{B}(T)
+    \[ w\in\Ea \iff \cu[\kappa, w\inv\tau w] = 1 \in\BT
     . \]
-    Unter dem Isomorphismus~$\phi$ wird die rechte Gleichung
-    dann gerade zu $\cu[\kappa, w\inv\tau w] = 1 \in\BT$
-    und mit \cref{ch1:Gamma} folgt die erste Behauptung.
-    
-    Zu~\ref{ch1:BTproperties:hnn}: Die letzten beiden Erweiterungen
-    sind HNN-Erweiterungen nach \cref{ch0:simpleHNN}. Dass $\hBT_2$
-    eine HNN-Erweiterung mit Basis~$\BT_2$ ist, ist klar (wähle
-    $M_{\tilde q} = \emptyset$ für alle $\tilde q\in Q\cup\{q\}$).
-    Weiter induziert $x\mapsto x^2$ klarerweise einen Isomorphismus
-    zwischen den unendlich zyklischen Gruppen $\scriptstyle\Spann{x}_{\BT_0}$
-    und $\scriptstyle\Spann{x^2}_{\BT_0}$, was zeigt, dass $\BT_1$ eine
-    HNN-Erweiterung mit Basis~$\BT_0$ ist. Es bleibt zu zeigen,
-    dass $\BT_2$ eine HNN-Erweiterung mit Basis~$\hBT_2$ ist.
-    Dazu zeigt man (für jedes $i\in I$), dass $\{F_i^\#q_{i,1}G_i\}\cup
-    S_+x$ ein freies Erzeugendensystem der von dieser Menge
-    in~$\hBT_2$ erzeugten Untergruppe ist und analog für
-    $\{H_i^\#q_{i,2}K_i\}\cup S_+x\inv$, womit man leicht die
-    gewünschten Isomorphismen konstruiert. 
+\end{thDefProposition}
+
+\smallskip
+\begin{proof}[Beweisskizze von Proposition~\ref{ch1:BT}]
+    Die Konstruktion von~$\BT$ (aus der zu $T$ assoziierten Halbgruppe)
+    erfolgt analog zur Gruppe von Boone, die in den letzten Vorträgen
+    verwendet wurde. Mit dem Übersetzungsschema
+    \enquote{$\tau = q_1\inv hth\inv q_1$,
+    $\kappa = hkh\inv$} sieht man auch leicht, dass~$\BT$ sogar isomorph
+    zu Boones Gruppe ist.     
+    Das \emph{Lemma von Boone} in Kombination mit der grundlegenden
+    Eigenschaft der zu~$T$ assoziierten Halbgruppe liefert dann die
+    gewünschte Aussage über positive Wörter auf~$S$.
     \\
 \end{proof}
 
 \begin{thDef}[Erweiterungen von \texorpdfstring{$\BT$}{B}]
     \label{ch1:BT6fromBT}
-    Sei $B \defeq \{b_1,\dots,b_m\}$ eine Menge neuer Symbole
-    und seien weiter $d,\sigma$ neue Symbole. Dann definieren
-    wir sukzessive Erweiterungen von~$\BT$ wie folgt:
+    %
+    Wir definieren sukzessive Erweiterungen von~$\BT$ wie folgt:
     \begin{align*}
         \hBT_4 &\defeq \gadj{\BT}{U}{E} = \BT \fprod R
         \\
@@ -234,8 +120,7 @@ wir außerdem $S_+ \defeq S\cup\{h\}$.
             \bigr\} \cup \bigl\{
             \cu[b, a] \Mid b\in B,\, a\in A
             \bigr\}
-        \\
-        &\qquad\cup \bigl\{
+            \cup \bigl\{
             b_j\inv\kappa b_j = \kappa u_j\inv \Mid j\in\J \bigr\}
         \\[2pt]
         \Delta_5 &\defeq \bigl\{ \cu[d, \kappa] \bigr\}
@@ -247,7 +132,6 @@ wir außerdem $S_+ \defeq S\cup\{h\}$.
     . \end{align*}
 \end{thDef}
 
-\pagebreak[2]
 \begin{thProposition}[\texorpdfstring{$R\leq \BT_6$}%
                         {R als Untergruppe von B6}]\hfill
     \label{ch1:RinBT6}
@@ -264,263 +148,13 @@ wir außerdem $S_+ \defeq S\cup\{h\}$.
     \end{enumerate}
 \end{thProposition}
 
-\begin{thLemma}\label{ch1:freesubgroupsinBT}
-    Es sind $A\cup\{\tau\}$ bzw. $A\cup\{\kappa\}$ freie
-    Erzeugendensysteme der von diesen Mengen in~$\BT_3$ bzw.
-    $\BT$ erzeugten Untergruppen.
-\end{thLemma}
-%
-\begin{proof}
-    Wir zeigen die erste Behauptung, die zweite folgt mit einem
-    analogen Argument (siehe Rotman\cite[Lemma~12.21]{bookc:rotman95}).
-    
-    Nach \mycref{ch1:BTproperties:hnn} und \cref{ch0:hnnstablesfree}
-    ist die von $S_+$ in $\BT_1$ erzeugte Untergruppe frei
-    und mit $\BT_1 \leq \BT_3$ sowie $A\subset S_+$ folgt:
-    $A$ ist ein freies Erzeugendensystem von $\Spann{A}_{\BT_3}$.
-    Angenommen es gibt ein (frei reduziertes) Wort~$w$ auf~$A\cup\{\tau\}$
-    mit $w=1\in\BT_3$, in dem $\tau$ vorkommt. Sei außerdem $w$ von
-    minimaler Länge mit diesen Eigenschaften.
-    Weil $\BT_3$ eine HNN-Erweiterung mit Basis~$\BT_2$ und stabilem
-    Buchstaben~$\tau$ ist, gibt es dann nach dem Lemma von Britton
-    \pcref{ch0:brittonslemma} einen $\tau$-pinch in~$w$, d.\,h. es gilt
-    \[ w \equiv w_0 \, \tau^\epsilon w_1 \tau^{-\epsilon} \, w_2 \]
-    für $\epsilon\in\{\pm1\}$, geeignete Wörter $w_0,w_2$ und
-    ein Wort $w_1$, welches in $\BT_2$ gleich einem Wort aus
-    \[ \Spann[\big]{
-            \{q_1\inv hr_ih\inv q_1 \nMid i\in I\}
-            \cup\{q_1\inv hxh\inv q_1\}
-        }_{\BT_2}
-    \]
-    ist. Die Kommutator-Relationen in~$\Delta_3$ zeigen dann aber, dass
-    $\tau$ in~$\BT_3$ mit $w_1$ kommutiert, womit wir
-    \[ 1 = w = w_0 w_1 \tau^\epsilon \tau^{-\epsilon} w_2 = w_0w_1w_2
-    \]
-    in~$\BT_3$ erhalten, ein Widerspruch zur minimalen Wortlänge von~$w$.
-    Also kann in einem (frei reduzierten) Wort~$w$ auf~$A\cup\{\tau\}$
-    mit $w=1\in\BT_3$ kein~$\tau$ vorkommen, d.\,h. es muss schon
-    $w\in A^*$ gelten. Aber wir haben oben gesehen, dass die von~$A$
-    erzeugte Untergruppe frei ist, womit schon $w\equiv1$ gelten muss.
-    Also gibt es keine nicht-trivialen Relationen
-    in~$\Spann{A\cup\{\tau\}}_{\BT_3}$ und es folgt die Behauptung.
-    \\
-\end{proof}
-
-\begin{thKorollar}\label{ch1:freesubgroupsinhBT4}
-    Die Aussagen aus \cref{ch1:freesubgroupsinBT} gelten analog auch
-    in~$\hBT_4$ (statt $\BT_3$ und~$\BT$).
-\end{thKorollar}
-%
-\begin{proof}
-    Wegen $\BT_3\leq\BT$ (\mycref{ch1:BTproperties:hnn}) und
-    weil $\BT$ ein freier Faktor von~$\hBT_4$ ist, folgt dies
-    direkt aus \cref{ch1:freesubgroupsinBT}.
-    \\
-\end{proof}
-
-\begin{thLemma}\label{ch1:HNNeBT4}
-    Es ist $\BT_4$ eine HNN-Erweiterung mit Basis~$\hBT_4$.
-\end{thLemma}
-%
-\begin{proof}
-    Sei $b\in B$ und sei $u\defeq\tr^B_U(b)$.
-    Dann haben wir mit
-    \[ M_b = \{ (u,u), (a,a) \Mid u\in U, a\in A\}
-        \cup\{(\kappa,\kappa u\inv)\}
-    \]
-    zu zeigen, dass
-    \begin{align*}
-        \phi\colon\Spann{A\cup \{\kappa\}\cup U}_{\hBT_4}
-        &\to
-        \Spann{A\cup \{\kappa u\inv\}\cup U}_{\hBT_4}
-        \\
-        \kappa &\mapsto \kappa u\inv  \\
-        \phi\vert_{A\cup U} &\defeq \id_{A\cup U}
-    \end{align*}
-    ein wohldefinierter Isomorphismus zwischen diesen (identischen!)
-    Untergruppen von~$\hBT_4$ ist. Weil es aber in $\hBT_4 = \BT\fprod R$
-    offenbar keine Relationen zwischen den Symbolen aus~$A\cup\{\kappa\}$
-    und denen aus~$U$ gibt, sieht man sofort
-    \[ \Spann{A\cup \{\kappa\}\cup U}_{\hBT_4}
-        \cong \Spann{A\cup\{\kappa\}}_{\hBT_4} \fprod R
-    \]
-    ein. Mit \cref{ch1:freesubgroupsinhBT4} und den
-    universellen Eigenschaften von freien Gruppen und
-    freien Produkten folgt, dass $\phi$ ein wohldefinierter
-    Gruppenhomomorphismus ist. Weiter erhält man aus
-    $\kappa\mapsto\kappa u$ und ansonsten derselben
-    Definition wie bei~$\phi$ einen zu $\phi$ inversen
-    Homomorphismus, womit alles gezeigt ist.
-    \\
-\end{proof}
-
-\begin{thLemma}\label{ch1:HNNeBT5}
-    Es ist $\BT_5$ eine HNN-Erweiterung mit Basis~$\BT_4$.
-\end{thLemma}
-%
-\begin{proof}
-    Wir haben
-    \[ M_d = \bigl\{ (\kappa,\kappa) \bigr\}
-        \cup \bigl\{ (a_jb_j,a_j) \Mid j\in\J \bigr\}
-    . \]
-    Die Abbildung $\phi\colon\BT_4\to\hBT_4$, die auf
-    $\BT$ die Identität ist und alle Erzeuger aus $B\cup U$
-    auf~$1\in\hBT_4$ abbildet, schickt offenbar alle Relationen
-    aus~$\Delta_4$ auf die triviale Relation in~$\hBT_4$, womit
-    $\phi$ nach der universellen Eigeschaft von durch Erzeugern
-    und Relationen gegeben Gruppen einen wohldefinierten
-    Gruppenhomomorphismus definiert. Nun bildet~$\phi$ die
-    Untergruppe
-    \[ H\defeq\Spann[\big]{\bigl\{ \kappa \bigr\}
-        \cup \bigl\{ a_jb_j \Mid j\in\J \bigr\}}_{\BT_4}
-    \]
-    auf die Untergruppe $\Spann{A\cup\{\kappa\}}_{\hBT_4}$
-    ab, mit $\kappa\mapsto\kappa$ und $a_jb_j\mapsto a_j$
-    für alle $j\in\J$. Mithilfe der universellen Eigenschaft
-    der (nach \cref{ch1:freesubgroupsinhBT4}) freien Gruppe
-    $\Spann{A\cup\{\kappa\}}_{\hBT_4}$ folgert man leicht,
-    dass damit auch~$H$ frei von den obigen Elementen erzeugt wird.
-    Aus \cref{ch1:HNNeBT4} folgt insbesondere $\hBT_4\leq\BT_4$,
-    d.\,h. auch $H'\defeq\Spann{A\cup\{\kappa\}}_{\BT_4}$ ist frei
-    erzeugt von $A\cup\{\kappa\}$. Mit den universellen Eigenschaften
-    der freien Gruppen $H$ und~$H'$ erhalten wir sofort den
-    gewünschten Isomorphismus $H\to H'$, der die Behauptung zeigt.
-    \\
-\end{proof}
-
-\begin{thLemma}\label{ch1:presofAkappatau}
-    Die von $A\cup\{\kappa,\tau\}$ in $\BT$ erzeugte Untergruppe
-    besitzt folgende Präsentation:
-    \[ \mathcal{A} \defeq
-        \gpres[{[\big]}]{A\cup\{\kappa,\tau\}}%
-                   {\{ \cu[\kappa, \omega\inv\tau\omega]
-                        \nMid \omega\in\Ea \}}
-    . \]
-\end{thLemma}
-
-\begin{thLemma}\label{ch1:wordsinAkappatau}
-    Zu jedem $w'\in\mathcal A$ (mit $\mathcal A$ aus
-    \cref{ch1:presofAkappatau}) gibt es ein
-    gibt es ein Wort~$w$ auf $A\cup\{\kappa,\tau\}$
-    mit $w'=w$ in~$\mathcal A$, so dass $w$ kein
-    Teilwort der Form $\tau^\epsilon\omega\kappa^\eta$
-    mit $\epsilon,\eta\in\{\pm1\}$ und $\omega\in\Ea$ enthält.
-\end{thLemma}
-%
-\begin{proof}
-    Sei $w'$ ein (frei reduziertes) Wort aus~$\mathcal A$
-    und seien $y_1,\dots,y_n\in A\cup\{\kappa,\tau\}$ sowie
-    $\epsilon_1,\dots,\epsilon_n\in\{\pm1\}$
-    mit
-    \[ w' \equiv
-        y_1^{\epsilon_1}y_2^{\epsilon_2}\cdots y_n^{\epsilon_n}
-    . \]
-    Die Zahl
-    \[ c(w') \defeq \sum_{j=1}^n \delta_{y_j,\tau}
-                        \sum_{\ell=j+1}^n \delta_{y_\ell,\kappa}
-        \;\in\,\N
-    \]
-    (wobei $\delta_{y,y'} = 1$ falls $y=y'$ und $\delta_{y,y'} = 0$ sonst)
-    beschreibt, wie oft~$\tau$ vor~$\kappa$ vorkommt.
-    Sei nun $w\in (A\cup\{\kappa,\tau\})^*$ mit $w'=w$ in~$\mathcal A$,
-    so dass $c(w)$ minimal ist. Wir zeigen nun, dass $w$ das gesuchte
-    Wort ist.
-    
-    Angenommen, es gibt $\epsilon,\tau\in\{\pm1\}$ und $\omega\in\Ea$,
-    so dass
-    \[ w \equiv w_0 \, \tau^\epsilon\omega\kappa^\eta \, w_1 \]
-    (für geeignete Wörter $w_0,w_1$) gilt. Nach Definition
-    von $\mathcal A$ gilt $\cu[\kappa, \omega\inv\tau\omega] = 1
-    \in\mathcal A$ und durch Ausschreiben dieser Gleichung und einfache
-    Umformungen erhalten wir:
-    \[ \tau^\epsilon\omega\kappa^\eta
-        = \omega\kappa^\eta\omega\inv\tau^\epsilon\omega
-        \in\mathcal A
-    . \]
-    Es folgt
-    \[ w = w_0 \, \omega\kappa^\eta\omega\inv\tau^\epsilon\omega \, w_1
-        \eqdef w''
-    \]
-    in~$\mathcal A$, aber offenbar gilt dann $c(w'') < c(w)$, im
-    Widerspruch zur Wahl von~$w$.
-    \\
-\end{proof}
-
-\begin{proof}[Beweisskizze von \cref{ch1:presofAkappatau}]
-    \mycref{ch1:BTproperties:boone} zeigt, dass die kanonische
-    Abbildung
-    \[ A\cup\{\kappa,\tau\}\to\Spann{A\cup\{\kappa,\tau\}}_{\BT} \]
-    die Relationen aus $\mathcal A$ erhält und somit nach der universellen
-    Eigschaft von durch Erzeuger und Relationen gegeben Gruppen einen
-    Homomorphismus 
-    \[ \phi\colon\mathcal{A}\to\Spann{A\cup\{\kappa,\tau\}}_{\BT} \]
-    induziert. Offensichtlich ist~$\phi$ surjektiv, d.\,h. es bleibt
-    die Injektivität von~$\phi$ zu zeigen. Sei also
-    $w\in\mathcal A$ mit $\phi(w) \mathrel{\glqq{=}\grqq}
-    w = 1 \in\Spann{A\cup\{\kappa,\tau\}}_{\BT}$.
-    Nach \cref{ch1:wordsinAkappatau} können wir o.\,E. annehmen, dass
-    $w$ kein Teilwort der Form $\tau^\epsilon\omega\kappa^\eta$ mit
-    $\epsilon,\eta\in\{\pm1\}$ und $\omega\in\Ea$ enthält.
-    
-    Man kann nun zeigen, dass die Annahme $w\not\equiv 1$ zu einem
-    Widerspruch führt. Der sehr technische und längliche Beweis
-    kann bei Rotman\cite[Lemma~12.24]{bookc:rotman95} nachgelesen werden;
-    wir skizzieren hier nur grob das Vorgehen von Rotman:
-    \begin{itemize}
-        \item
-            Wir haben $w = 1\in\Spann{A\cup\{\kappa,\tau\}}_{\BT}$
-            nach Wahl von~$w$.\\
-            Angenommen, es ist $w$ \emph{nicht} das leere Wort.
-            
-        \item
-            Zuerst folgt dann aus \cref{ch1:freesubgroupsinBT}, dass
-            $w$ sowohl $\tau$ als auch $\kappa$ enthalten muss.
-            
-        \item
-            Das Lemma von Britton \pcref{ch0:brittonslemma} liefert
-            dann einen $\kappa$-pinch $\kappa^\eta V\!\kappa^{-\eta}$
-            in~$w$, wobei
-            \[ D\in \bigl(\{hr_ih\inv \Mid i\in I\}
-                \cup\{hxh\inv,\, hq\inv h\inv q_1\tau q_1\inv hqh\inv\}
-                \bigr)^*
-                \qundq
-                D = V \in\BT_3
-            . \]
-            
-        \item
-            Man kann nun zeigen, dass $D$ so gewählt werden kann,
-            dass $D$ keinen $\tau$-pinch enthält, und außerdem
-            kann man zeigen, dass $V$ keinen $\tau$-pinch enthält.
-            
-        \item
-            Aus dem letzten Schritt kann man (unter anderem mit mehrmaliger
-            Anwendung des Lemmas von Britton) herleiten, dass sowohl
-            $V$ als auch~$D$ mindestens ein~$\tau$ enthalten.
-            
-        \item
-            Indem man das letzte Vorkommen von~$\tau$ in~$V$ betrachtet
-            und $V=D\in\BT_3$ benutzt, kann man zeigen: $V$~endet auf
-            ein Wort $\tau^\epsilon\omega$ mit $\epsilon\in\{\pm1\}$ und
-            $\omega\in\Ea$.
-            
-        \item
-            Aus den vorherigen Schritten erhalten wir:
-            $w$~enthält den $\kappa$-pinch $\kappa^\eta V\!\kappa^{-\eta}$
-            und $V$ endet auf~$\tau^\epsilon\omega$, d.\,h. es gilt
-            \[ w \equiv w_0 \, \kappa^\eta V\!\kappa^{-\eta} \, w_2
-                 \equiv w_0 \, \kappa^\eta w_1 \,
-                 \tau^\epsilon\omega\kappa^{-\eta} \, w_2
-            \]
-            für geeignete Wörter~$w_0,w_1,w_2$.
-            Aber dies ist ein Widerspruch dazu, dass $w$ kein Teilwort
-            der Form $\tau^\epsilon\omega\kappa^{-\eta}$ enthält, womit
-            die Annahme falsch gewesen sein muss, d.\,h. es gilt doch schon
-            \[ w\equiv 1  , \]
-            und damit ist $\phi$ auch injektiv.
-            \\
-            \qedhere
-    \end{itemize}
-\end{proof}
+\begin{thAufgabe}
+    Zeige: Es ist $A\cup\{\kappa\}$ ein freies Erzeugendensystem der
+    von dieser Menge in~$\BT$ erzeugten Gruppe.\\
+    Hinweise: Benutze, dass $A$ ein freies Erzeugendensystem
+    von~$\Spann{A}_{\BT}$ ist. Verwende dann eine geeignete
+    HNN-Erweiterung und das \emph{Lemma von Britton}.
+\end{thAufgabe}
 
 \begin{thLemma}\label{ch1:conjugatesinBT5}
     Sei $\omega\in\Ea$ und seien $\omega_b \defeq \tr^A_B(\omega)$,
@@ -530,209 +164,27 @@ wir außerdem $S_+ \defeq S\cup\{h\}$.
         d \omega d\inv &= \omega\omega_b
     . \end{align*}
 \end{thLemma}
-%
-\begin{proof}
-    Dies folgt leicht aus den in~$\BT_5$ gültigen Relationen.
-    Die Details werden dem Leser zur Übung überlassen.
-    \\
-\end{proof}
 
-\begin{thLemma}\label{ch1:HNNeBT6}
-    Es ist $\BT_6$ eine HNN-Erweiterung mit Basis~$\BT_5$.
-\end{thLemma}
-%
-\begin{proof}
-    Wir haben
-    \[ M_\sigma = \{ (\kappa,\kappa),\, (\tau,\tau d) \}
-            \cup \{ (a,a) \Mid a\in A \}
-    . \]
-    Wir betrachten also
-    \begin{align*}
-        \phi\colon\Spann{A\cup\{\kappa,\tau\}}_{\BT_5}
-        &\to \Spann{A\cup\{\kappa,\tau d\}}_{\BT_5}
-        \\
-        \tau &\mapsto \tau d    \\
-        \phi\vert_{A\cup\{\kappa\}} &\defeq \id_{A\cup\{\kappa\}}
-    \end{align*}
-    und müssen zunächst zeigen, dass $\phi$ einen Gruppenhomomorphismus
-    induziert. Nach \cref{ch1:presofAkappatau} (und wegen $\BT\leq\BT_5$)
-    genügt es dafür zu zeigen: für alle $\omega\in\Ea$ gilt
-    \[  \cu[\kappa, \omega\inv\tau d\omega]
-        = \phi(\cu[\kappa, \omega\inv\tau\omega])
-        = 1 \in\BT_5
-    . \]
-    Sei also $\omega\in\Ea$ und seien $\omega_b \defeq \tr^A_B(\omega)$,
-    $\omega_u \defeq \tr^A_U(\omega)$. Dann gilt:
-    \begin{align*}
-        \cu[\kappa, \omega\inv\tau d\omega]
-        &=
-        \expandafter\bigl\cu[\kappa, \omega\inv\tau (d\omega d\inv) d\bigr]
-        \overset{\scriptscriptstyle(1)}=
-        \cu[\kappa, \omega\inv\tau \omega\omega_b d]
-        \\
-        &= \bigl(\omega\inv\tau\omega\omega_b d\kappa\bigr)\inv
-            \kappa \omega\inv\tau\omega\omega_b d
-        \\
-        &\overset{\scriptscriptstyle(2)}=
-        \bigl(\omega\inv\tau\omega\kappa(\kappa\inv\omega_b\kappa) d\bigr)\inv
-            \omega\inv\tau\omega\kappa\omega_b d
-        \\
-        &\overset{\scriptscriptstyle(3)}=
-        \bigl(\omega\inv\tau\omega\kappa\omega_b\omega_u d\bigr)\inv
-            \omega\inv\tau\omega\kappa\omega_b d
-        \\
-        &\overset{\scriptscriptstyle(4)}= 1
-    , \end{align*}
-    wobei wir Folgendes benutzt haben:
-    \begin{enumerate}[(1), itemsep=0pt, topsep=0.5\baselineskip]
-        \item
-            \cref{ch1:conjugatesinBT5}.
-        \item
-            Es kommutiert $\kappa$ nach Definition von~$\BT_5$ mit~$d$
-            und nach \mycref{ch1:BTproperties:boone} mit
-            $\omega\inv\tau\omega$.
-        \item
-            \cref{ch1:conjugatesinBT5}.
-        \item
-            Nach Konstruktion gilt gerade $\omega_u\in E$, wobei
-            $E$ die Menge der Relationen von~$R$ war, und diese Relationen
-            sind in~$\BT_5$ ebenfalls gültig, d.\,h. $\omega_u = 1\in\BT_5$.
-    \end{enumerate}
-    Mit der universellen Eigenschaft von durch Erzeugern und Relationen
-    gegebenen Gruppen sieht man sofort ein, dass
-    \begin{align*}
-        \psi\colon \BT_5 &\to \BT_5
-        \\
-        \mathllap{B\cup U\cup\{d\}} \ni y &\mapsto 1     \\
-        \psi\vert_{\BT} &\defeq \id_{\BT}
-    \end{align*}
-    einen wohldefinierten Gruppenhomomorphismus induziert. Außerdem gilt
-    offenbar $\im(\psi) \subset \Spann{A\cup\{\kappa,\tau\}}_{\BT_5}$
-    und man sieht ebenfalls sofort, dass dann die entsprechende Einschränkung
-    von~$\psi$ ein Inverses zu~$\phi$ liefert, d.\,h. $\phi$ ist ein
-    Isomorphismus und dies zeigt die Behauptung.
-    \\
-\end{proof}
-
-{\def\myTMP{Beweis von Proposition~\ref{ch1:RinBT6}} % \cref doesn't work :/
-here
-\begin{proof}[Beweis von \cref{ch1:RinBT6}]
-    \expandafter\belowpdfbookmark\expandafter{\expandafter\myTMP}{Beweis42}
-    %
-    Die Lemmata \ref{ch1:HNNeBT4}, \ref{ch1:HNNeBT5} und
-    \ref{ch1:HNNeBT6} zeigen den ersten Teil. Der zweite
-    Teil folgt mittels $R\leq \BT \fprod R = \hBT_4$ und
-    mehrmaliger Anwendung von \cref{ch0:hnnembedding} aus
-    dem ersten Teil.\\
-\end{proof}
-}
+\begin{thAufgabe}
+    Beweise \cref{ch1:conjugatesinBT5}.
+\end{thAufgabe}
 
 \begin{thProposition}[Endliche Präsentation von \texorpdfstring{$\BT_6$}{B6}]
     \label{ch1:BT6fp}
     %
     Die Gruppe $\BT_6$ ist endlich präsentiert.
 \end{thProposition}
-%
-\begin{proof}
-    Zunächst sehen wir direkt an der Konstruktion von~$\BT_6$
-    (Definitionen \ref{ch1:BT} und~\ref{ch1:BT6fromBT}), dass
-    $\BT_6$ endlich erzeugt ist von
-    \[ \{q,h\} \cup S\cup Q
-        \cup \{r_i\Mid i\in I\}\cup\{x,\kappa,\tau\}
-        \cup U \cup B \cup \{d,\sigma\}
-    \]
-    und dass
-    \[ \underbrace{\Delta \cup \bigcup\nolimits_{j=1}^6 \Delta_j}_{
-        \eqdef\widetilde\Delta\;\,\mathrlap{\text{endl. viele Rel.}}
-        } \surround{\quad}\cup E
-    \]
-    alle Relationen von~$\BT_6$ umfasst. Um nun einzusehen,
-    dass $\BT_6$ sogar endlich präsentiert ist, genügt es zu zeigen,
-    dass die Relationen in~$E$ schon von denen in~$\widetilde\Delta$
-    impliziert werden.
-    
-    Sei also $\omega_u\in E$ und seien $\omega\defeq\tr^U_A(\omega_u)$,
-    $\omega_b\defeq\tr^U_B(\omega)$. Wir zeigen zuerst, dass
-    $\kappa$ mit $\omega\inv d\omega$ kommutiert:
-    \begin{align*}
-        \kappa\omega\inv d\omega
-        &=
-        \kappa\omega\inv (\tau\inv\omega\omega\inv\tau) d\omega
-        \\
-        &\overset{\scriptscriptstyle(1)}=
-        \omega\inv\tau\inv\omega\kappa \omega\inv
-            (\sigma\inv\tau\sigma)\omega
-        \\
-        &\overset{\scriptscriptstyle(2)}=
-        \omega\inv\tau\inv\sigma\inv
-            \omega\kappa \omega\inv\tau\omega\sigma
-        \\
-        &\overset{\scriptscriptstyle(3)}=
-        \omega\inv\tau\inv\sigma\inv
-            \omega\omega\inv\tau\omega\kappa\sigma
-        \\
-        &\overset{\scriptscriptstyle(4)}=
-        \omega\inv\tau\inv\sigma\inv\tau\sigma\omega\kappa
-        \\
-        &\overset{\scriptscriptstyle(5)}=
-        \omega\inv d\omega\kappa
-    , \end{align*}
-    wobei wir Folgendes benutzt haben:
-    \begin{enumerate}[(1), itemsep=0pt, topsep=0.5\baselineskip]
-        \item
-            \mycref{ch1:BTproperties:boone} und $\tau d =
-            \sigma\inv\tau\sigma$ (aus $\Delta_6$)
-        \item
-            Aus den Relationen in~$\Delta_6$ folgt: $\sigma$ kommutiert
-            mit~$\omega$ und mit~$\kappa$.
-        \item
-            \mycref{ch1:BTproperties:boone}
-        \item
-            Nochmal $\cu[\sigma, \omega] = 1$
-            und $\cu[\sigma, \kappa] = 1$.
-        \item
-            Nochmal $\tau d = \sigma\inv\tau\sigma$ in Form von
-            $\cu[\tau, \sigma] = d$.
-    \end{enumerate}
-    Nun erhalten wir:
-    \begin{align*}
-        \omega_b\omega_u
-        &\overset{\scriptscriptstyle(1)}=
-        \kappa\inv\omega_b\kappa
-        \\
-        &\overset{\scriptscriptstyle(2)}=
-        \kappa\inv\omega_b d\kappa d'
-        \\
-        &\overset{\scriptscriptstyle(3)}=
-        \kappa\inv \omega\inv d\omega \kappa d'
-        \\
-        &\overset{\scriptscriptstyle(4)}=
-        \omega\inv d\omega d'
-        \\
-        &\overset{\scriptscriptstyle(5)}=
-        \omega_b
-    , \end{align*}
-    wobei wir diesmal verwendet haben:
-    \begin{enumerate}[leftmargin=2.155cm, itemsep=0pt, topsep=0.5\baselineskip]
-        \item[(1),(3),(5)]
-            \cref{ch1:conjugatesinBT5}
-        \item[(2)]
-            $\cu[d, \kappa] = 1$ (aus $\Delta_5$)
-        \item[(4)]
-            $\cu[\kappa, \omega\inv d\omega] = 1$
-    \end{enumerate}
-    Es folgt
-    \[ \omega_u = 1  , \]
-    und wir haben nur Relationen aus~$\widetilde\Delta$ benutzt, um dies
-    zu zeigen.
-    \\
-\end{proof}
 
-{\def\myTMP{Beweis von Satz~\ref{ch1:higman}} % \cref doesn't work :/
 \begin{proof}[Beweis von \cref{ch1:higman}]
-    \expandafter\belowpdfbookmark\expandafter{\expandafter\myTMP}{Beweis4242}
     %
     Der Einbettungssatz von Higman folgt nun aus dem zweiten Teil von
     \cref{ch1:RinBT6} und \cref{ch1:BT6fp}.
     \\
 \end{proof}
+
+\begin{thAufgabe}
+    Zeige, dass in folgendem Sinne auch die Umkehrung von \cref{ch1:higman}
+    gilt: Sei $G$ eine endlich erzeugte Gruppe. Wenn $G$ in eine endlich
+    präsentierte Gruppe eingebettet werden kann, so ist $G$ schon rekursiv
+    präsentiert.
+\end{thAufgabe}
