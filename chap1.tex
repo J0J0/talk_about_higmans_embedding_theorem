@@ -2,7 +2,7 @@
 \begin{thDef}[rekursiv präsentiert]
     Sei $R$ eine Gruppe. Dann ist $R$ \emph{rekursiv präsentiert},
     falls $R$ endlich erzeugt ist und es eine Präsentation
-    $R = \gpres{u_1,\dots,u_m}{E}$ von~$R$ gibt, so dass
+    $R \cong \gpres{u_1,\dots,u_m}{E}$ von~$R$ gibt, so dass
     jedes $\omega\in E$ ein positives Wort auf~$\{u_1,\dots,u_m\}$
     und die Menge~$E$ rekursiv aufzählbar ist.
 \end{thDef}
@@ -278,9 +278,9 @@ wir außerdem $S_+ \defeq S\cup\{h\}$.
     ist die von $S_+$ in $\BT_1$ erzeugte Untergruppe frei
     und mit $\BT_1 \leq \BT_3$ sowie $A\subset S_+$ folgt:
     $A$ ist ein freies Erzeugendensystem von $\Spann{A}_{\BT_3}$.
-    Angenommen es gibt ein (frei reduziertes) Wort~$w$ auf~$A\cup\{\tau\}$
-    mit $w=1\in\BT_3$, in dem $\tau$ vorkommt. Sei außerdem $w$ von
-    minimaler Länge mit diesen Eigenschaften.
+    Sei $w$ ein (frei reduziertes) Wort auf~$A\cup\{\tau\}$
+    mit $w=1\in\BT_3$ und sei $w$ so gewählt, dass die Anzahl~$n$
+    der Vorkommen von~$\tau$ in~$w$ minimal ist. Angenommen es gilt~$n\geq1$.
     Weil $\BT_3$ eine HNN-Erweiterung mit Basis~$\BT_2$ und stabilem
     Buchstaben~$\tau$ ist, gibt es dann nach dem Lemma von Britton
     \pcref{ch0:brittonslemma} einen $\tau$-pinch in~$w$, d.\,h. es gilt
@@ -296,7 +296,7 @@ wir außerdem $S_+ \defeq S\cup\{h\}$.
     $\tau$ in~$\BT_3$ mit $w_1$ kommutiert, womit wir
     \[ 1 = w = w_0 w_1 \tau^\epsilon \tau^{-\epsilon} w_2 = w_0w_1w_2
     \]
-    in~$\BT_3$ erhalten, ein Widerspruch zur minimalen Wortlänge von~$w$.
+    in~$\BT_3$ erhalten, ein Widerspruch zur Minimalität von~$n$.
     Also kann in einem (frei reduzierten) Wort~$w$ auf~$A\cup\{\tau\}$
     mit $w=1\in\BT_3$ kein~$\tau$ vorkommen, d.\,h. es muss schon
     $w\in A^*$ gelten. Aber wir haben oben gesehen, dass die von~$A$
@@ -400,10 +400,9 @@ wir außerdem $S_+ \defeq S\cup\{h\}$.
 
 \begin{thLemma}\label{ch1:wordsinAkappatau}
     Zu jedem $w'\in\mathcal A$ (mit $\mathcal A$ aus
-    \cref{ch1:presofAkappatau}) gibt es ein
-    gibt es ein Wort~$w$ auf $A\cup\{\kappa,\tau\}$
-    mit $w'=w$ in~$\mathcal A$, so dass $w$ kein
-    Teilwort der Form $\tau^\epsilon\omega\kappa^\eta$
+    \cref{ch1:presofAkappatau}) gibt es ein Wort~$w$ auf
+    $A\cup\{\kappa,\tau\}$ mit $w'=w$ in~$\mathcal A$,
+    so dass $w$ kein Teilwort der Form $\tau^\epsilon\omega\kappa^\eta$
     mit $\epsilon,\eta\in\{\pm1\}$ und $\omega\in\Ea$ enthält.
 \end{thLemma}
 %
@@ -700,13 +699,13 @@ wir außerdem $S_+ \defeq S\cup\{h\}$.
         \kappa\inv\omega_b\kappa
         \\
         &\overset{\scriptscriptstyle(2)}=
-        \kappa\inv\omega_b d\kappa d'
+        \kappa\inv\omega_b d\kappa d\inv
         \\
         &\overset{\scriptscriptstyle(3)}=
-        \kappa\inv \omega\inv d\omega \kappa d'
+        \kappa\inv \omega\inv d\omega \kappa d\inv
         \\
         &\overset{\scriptscriptstyle(4)}=
-        \omega\inv d\omega d'
+        \omega\inv d\omega d\inv
         \\
         &\overset{\scriptscriptstyle(5)}=
         \omega_b
